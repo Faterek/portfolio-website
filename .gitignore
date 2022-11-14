@@ -25,4 +25,4 @@ gitignore
 Thumbs.db
 
 #Dotenv
-.env*
+.env
