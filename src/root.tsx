@@ -12,9 +12,7 @@ import {
   Scripts,
   Title,
 } from "solid-start";
-import { config } from "dotenv"
 import "./root.css";
-config()
 export default function Root() {
   return (
     <Html lang="en">
