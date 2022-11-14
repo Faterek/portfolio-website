@@ -11,34 +11,15 @@ const {
 const db = new Surreal(db_url);
 export async function initDB() {
     try {
-        console.log("Initializing database...");
-        if (!db_login || !db_pass || !db_url) {
-            throw new Error("DB_LOGIN, DB_PASSWORD or DB_URL is not set")
-        }
-        await db
-            .connect(db_url)
-            .then(() => {
-                console.log("Connected to database");
-            })
-            .catch((err) => {
-                console.log("Error connecting to database", err);
-            });
-        
-        await db
-            .signin({
+        await db.signin({
                 user: db_login,
                 pass: db_pass,
             })
-            .then((res) => {
-                console.log("Signed in to database", res);
+            .then(async () => {
+                await db.use(db_ns, db_db);
             })
-            .catch((err) => {
-                console.log("Error signing in to database", err);
-            });
-        
-        await db.use(db_ns, db_db);
     } catch (err) {
         console.error(err);
     }
 }
-export default db;
+export default await db;
