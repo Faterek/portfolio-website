@@ -1,6 +1,7 @@
 import Surreal  from "surrealdb.js"
 import { config } from "dotenv"
 config()
+
 const {
     SURREAL_DB_URL: db_url,
     SURREAL_DB_LOGIN: db_login,
@@ -12,9 +13,8 @@ const {
 const db = new Surreal(db_url);
 export async function initDB() {
     try {
-        if (!db_login || !db_pass || !db_url) {
+        if (!db_login || !db_pass || !db_url)
             throw new Error("DB_USERNAME or DB_PASSWORD not set")
-        }
 
         await db
             .connect(db_url)

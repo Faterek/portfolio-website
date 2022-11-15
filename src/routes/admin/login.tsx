@@ -6,9 +6,9 @@ import { createServerAction$, createServerData$, redirect } from "solid-start/se
 
 export function routeData() {
     return createServerData$(async (_, { request }) => {
-        if (await getUser(request)) {
+        if (await getUser(request))
             throw redirect("/admin/panel");
-        }
+
         return {};
     });
 }
@@ -19,23 +19,16 @@ export default function Login() {
     const [loggingIn, { Form }] = createServerAction$(async (form: FormData) => {
         const username = form.get("username");
         const passwd = form.get("password");
-        if (
-            typeof username !== "string" ||
-            typeof passwd !== "string"
-        ) {
+        if ( typeof username !== "string" || typeof passwd !== "string") 
             throw new FormError(`Form not submitted correctly.`);
-        }
   
         const fields = {username, passwd };
    
         const user = await login({ username, passwd });
-        if (!user) {
-            throw new FormError(`Username/Password combination is incorrect`, {
-                fields
-            });
-        }
+        if (!user) 
+            throw new FormError(`Incorrect credentials`, { fields });
+
         return createUserSession(`${user.id}`, "/admin/panel");
-        
     });
   
     return (
@@ -50,9 +43,6 @@ export default function Login() {
                     <label for="password-input">Password:</label>
                     <input name="password" type="password" placeholder="Password" class="text-black focus:text-black"/>
                 </div>
-                <Show when={loggingIn.error?.fieldErrors?.username || loggingIn.error?.fieldErrors?.passwd}>
-                    <p role="alert">{loggingIn.error.fieldErrors.passwd}</p>
-                </Show>
                 <Show when={loggingIn.error}>
                     <p role="alert" id="error-message">
                         {loggingIn.error.message}

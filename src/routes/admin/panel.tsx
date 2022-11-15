@@ -5,11 +5,8 @@ import { getUser, logout } from "~/db/session";
 export function routeData() {
   return createServerData$(async (_, { request }) => {
     const user = await getUser(request);
-
-    if (!user) {
-      throw redirect("/");
-    }
-
+    if (!user)
+        throw redirect("/");
     return user;
   });
 }
