@@ -1,28 +1,31 @@
 import { redirect } from "solid-start/server";
 import { createCookieSessionStorage } from "solid-start/session";
+import { config } from "dotenv";
 import db from "."
 type LoginForm = {
     username: string;
     passwd: string;
 };
 
+config()
+
 export async function login({ username, passwd }: LoginForm) {
-  const user = await db.query("SELECT * FROM users WHERE username = $username;", { username });
+  const users = await db.query("SELECT * FROM users WHERE username = $username;", { username });
 
-  if (user[0].result == false) return null;
-  const result = user[0].result[0]
+  if (users[0].result == false) return null;
+  const user = users[0].result[0]
 
-  const isCorrectPassword = await db.query("SELECT * FROM crypto::argon2::compare($hash , $pass);", { hash: result.password, pass: passwd })
+  const isCorrectPassword = await db.query("SELECT * FROM crypto::argon2::compare($hash , $pass);", { hash: user.password, pass: passwd })
   if (isCorrectPassword[0].result[0] == false) return null;
 
-  return user[0].result;
+  return user;
 }
 
 const storage = createCookieSessionStorage({
   cookie: {
-    name: "FaterSite_session",
+    name: "Fater_protfolio_session",
     secure: true,
-    secrets: [import.meta.env.SESSION_SECRET],
+    secrets: [process.env.SESSION_SECRET],
     sameSite: "lax",
     path: "/",
     maxAge: 60 * 60 * 24 * 30, // second * minutes * hours * days 30 days
@@ -50,10 +53,7 @@ export async function logout(request: Request) {
   });
 }
 
-export async function requireUserId(
-  request: Request,
-  redirectTo: string = new URL(request.url).pathname
-) {
+export async function requireUserId( request: Request, redirectTo: string = new URL(request.url).pathname ) {
   const session = await getUserSession(request);
   const userId = session.get("userId");
   if (!userId || typeof userId !== "string") {
@@ -70,7 +70,8 @@ export async function getUser(request: Request) {
   }
 
   try {
-    const user = await db.query("SELECT * FROM users WHERE id = $userId;", { userId })
+    const request = await db.query("SELECT * FROM users WHERE id = $userId;", { userId })
+    const user = request[0].result[0]
     return user;
   } catch {
     throw logout(request);
