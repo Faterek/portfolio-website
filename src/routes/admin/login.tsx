@@ -1,16 +1,8 @@
 import { createUserSession, getUser, login } from "~/db/session";
 import { Show } from "solid-js";
-import { useParams, useRouteData } from "solid-start";
+import { useRouteData } from "solid-start";
 import { FormError } from "solid-start/data";
 import { createServerAction$, createServerData$, redirect } from "solid-start/server";
-
-function validateUsername(username: unknown) {
-    if (typeof username !== "string") return `Wrong username or password`;
-}
-  
-function validatePassword(password: unknown) {
-    if (typeof password !== "string") return `Wrong username or password`;
-}
 
 export function routeData() {
     return createServerData$(async (_, { request }) => {
@@ -23,29 +15,18 @@ export function routeData() {
 
 export default function Login() {
     const data = useRouteData<typeof routeData>();
-    const params = useParams();
   
     const [loggingIn, { Form }] = createServerAction$(async (form: FormData) => {
         const username = form.get("username");
         const passwd = form.get("password");
-        const redirectTo = form.get("redirectTo") || "/admin/panel";
         if (
             typeof username !== "string" ||
-            typeof passwd !== "string" ||
-            typeof redirectTo !== "string"
+            typeof passwd !== "string"
         ) {
             throw new FormError(`Form not submitted correctly.`);
         }
   
         const fields = {username, passwd };
-        const fieldErrors = {
-            username: validateUsername(username),
-            passwd: validatePassword(passwd)
-        };
-        
-        if (Object.values(fieldErrors).some(Boolean)) {
-            throw new FormError("Fields invalid", { fieldErrors, fields });
-        }
    
         const user = await login({ username, passwd });
         if (!user) {
@@ -53,7 +34,7 @@ export default function Login() {
                 fields
             });
         }
-        return createUserSession(`${user.id}`, redirectTo);
+        return createUserSession(`${user.id}`, "/admin/panel");
         
     });
   
@@ -61,7 +42,6 @@ export default function Login() {
         <main class="text-center text-white p-[0.1rem]">
             <h1 class="text-6xl font-thin uppercase my-16" >Login</h1>
             <Form>
-                <input type="hidden" name="redirectTo" value={params.redirectTo ?? "/admin/panel"} />
                 <div>
                     <label for="username-input">Username:</label>
                     <input name="username" placeholder="Username" class="text-black focus:text-black"/>

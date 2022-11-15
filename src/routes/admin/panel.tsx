@@ -1,5 +1,5 @@
 import { useRouteData } from "solid-start";
-import server$, { createServerAction$, createServerData$, redirect } from "solid-start/server";
+import { createServerAction$, createServerData$, redirect } from "solid-start/server";
 import { getUser, logout } from "~/db/session";
 
 export function routeData() {
