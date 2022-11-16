@@ -9,11 +9,13 @@ type LoginForm = {
 
 config()
 
+const {SESSION_SECRET: sessionSecret } = process.env
+
 const storage = createCookieSessionStorage({
   cookie: {
     name: "Fater_protfolio_session",
     secure: true,
-    secrets: [process.env.SESSION_SECRET],
+    secrets: [sessionSecret],
     sameSite: "lax",
     path: "/",
     maxAge: 60 * 60 * 24 * 30, // second * minutes * hours * days 30 days

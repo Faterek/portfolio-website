@@ -9,7 +9,6 @@
   "devDependencies": {
     "@types/marked": "^4.0.7",
     "autoprefixer": "^10.4.12",
-    "dompurify": "^2.4.1",
     "dotenv": "^16.0.3",
     "postcss": "^8.4.18",
     "solid-start-node": "^0.2.0",

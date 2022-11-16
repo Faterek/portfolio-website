@@ -1,5 +1,5 @@
 // @refresh reload
-import { Suspense } from "solid-js";
+import { createSignal, onMount, Suspense } from "solid-js";
 import {
   A,
   Body,
@@ -13,6 +13,12 @@ import {
   Title,
 } from "solid-start";
 import "./root.css";
+const [bodyClass, setBodyClass] = createSignal("preload")
+onMount( async () => {
+  setTimeout( async () => {
+    setBodyClass("")
+  }, 260)
+})
 export default function Root() {
   return (
     <Html lang="en">
@@ -21,7 +27,7 @@ export default function Root() {
         <Meta charset="utf-8" />
         <Meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <Body>
+      <Body class={bodyClass()}>
         <Suspense>
           <ErrorBoundary>
             <input type="checkbox" id="menu-toggle"/>
@@ -35,12 +41,12 @@ export default function Root() {
               </svg>
             </label>
             <ul id="menu">
-              <li class="menu-items w-[170px] indent-[25px]"><A class="menu-items route" href="/">Home</A></li>
-              <li class="menu-items w-[170px] indent-[25px]"><A class="menu-items route" href="/about">About</A></li>
-              <li class="menu-items w-[170px] indent-[25px]"><A class="menu-items route" href="/projects">Projects</A></li>
-              <li class="menu-subitems w-[170px] indent-[40px]"><A class="menu-subitems route" href="/projects/throw-em">Throw 'em</A></li>
-              <li class="menu-subitems w-[170px] indent-[40px]"><A class="menu-subitems route" href="/projects/this-website">This website</A></li>
-              <li class="menu-items w-[170px] indent-[25px]" id="contact"><A class="menu-items route" href="/contact">Contact</A></li>
+              <li class="menu-items w-[100%] indent-[25px]"><A class="menu-items route" href="/">Home</A></li>
+              <li class="menu-items w-[100%] indent-[25px]"><A class="menu-items route" href="/about">About</A></li>
+              <li class="menu-items w-[100%] indent-[25px]"><A class="menu-items route" href="/projects">Projects</A></li>
+              <li class="menu-subitems w-[100%] indent-[40px]"><A class="menu-subitems route" href="/projects/throw-em">Throw 'em</A></li>
+              <li class="menu-subitems w-[100%] indent-[40px]"><A class="menu-subitems route" href="/projects/this-website">This website</A></li>
+              <li class="menu-items w-[100%] indent-[25px]" id="contact"><A class="menu-items route" href="/contact">Contact</A></li>
             </ul>
             <div class="mx-[18.5%]">
               <Routes>
