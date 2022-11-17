@@ -32,6 +32,9 @@
     h3 {
         @apply text-4xl
     }
+    .submit-button {
+        @apply bg-[lightgray] text-black p-3 rounded-lg
+    }
 }
 
 ::-webkit-scrollbar {
@@ -129,42 +132,42 @@ body {
     animation: checked-anim .3s ease both;
 }
 
-#menu-toggle:checked ~ #icon > svg > g > #menu-middle{
+#menu-toggle:checked ~ #icon #menu-middle{
     transition: .2s;
     opacity: 0%;
 }
 
-#menu-toggle:checked ~ #icon > svg > g > #menu-top {
+#menu-toggle:checked ~ #icon #menu-top {
     transform: rotate(-45deg) translateX(-40%) translateY(30%);
     width: 70px;
     transition: .2s;
 }
 
-#menu-toggle:checked ~ #icon > svg > g > #menu-bottom {
+#menu-toggle:checked ~ #icon #menu-bottom {
     transform: rotate(45deg) translateX(30%) translateY(-60%);
     width: 70px;
     transition: .2s;
 }
 
-#menu-toggle ~ #icon > svg > g > #menu-middle{
+#menu-toggle ~ #icon #menu-middle{
     transition: .2s;
     opacity: 100%;
 }
 
-#menu-toggle ~ #icon > svg > g > #menu-top {
+#menu-toggle ~ #icon #menu-top {
     transform: rotate(0) translateX(0) translateY(0);
     width: 75px;
     transition: .2s;
 }
 
-#menu-toggle ~ #icon > svg > g > #menu-bottom {
+#menu-toggle ~ #icon #menu-bottom {
     transform: rotate(0) translateX(0) translateY(0);
     width: 75px;
     transition: .2s;
 }
 
-#menu-toggle:checked ~ #menu > li,
-#menu-toggle:checked ~ #menu > li > A
+#menu-toggle:checked ~ #menu li,
+#menu-toggle:checked ~ #menu A
 {
     display: block;
 }

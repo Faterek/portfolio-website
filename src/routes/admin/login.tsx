@@ -33,22 +33,22 @@ export default function Login() {
   
     return (
         <div class="mt-16">
-            <h1>Login</h1>
+            <h1>Login</h1><br />
             <Form>
                 <div>
-                    <label for="username-input">Username:</label>
-                    <input name="username" placeholder="Username" class="text-black focus:text-black"/>
-                </div>
+                    <label for="username-input">Username:</label> <br />
+                    <input name="username" placeholder="Username" class="text-black focus:text-black rounded-md p-1"/>
+                </div><br />
                 <div>
-                    <label for="password-input">Password:</label>
-                    <input name="password" type="password" placeholder="Password" class="text-black focus:text-black"/>
+                    <label for="password-input">Password:</label> <br />
+                    <input name="password" type="password" placeholder="Password" class="text-black focus:text-black rounded-md p-1"/>
                 </div>
                 <Show when={loggingIn.error}>
                     <p role="alert" id="error-message">
                         {loggingIn.error.message}
                     </p>
                 </Show>
-                <button type="submit">{data() ? "Login" : ""}</button>
+                <br /><button type="submit" class="submit-button">{data() ? "Login" : ""}</button>
             </Form>
         </div>
     );

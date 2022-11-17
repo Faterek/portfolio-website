@@ -13,17 +13,22 @@ export function routeData() {
 
 export default function AdminPanel(){
     const user = useRouteData<typeof routeData>();
-    const [, { Form }] = createServerAction$((f: FormData, { request }) => logout(request));
+const [, { Form }] = createServerAction$(async (form: FormData, { request }) => {
+    //     console.log(form.values())
+    logout(request)
+    })
 
     return (
         <div class="mt-16">
             <h1>Hello {user()?.username}</h1>
-            <h3>Message board</h3>
-            <Form>
-            <button name="logout" type="submit">
-                Logout
-            </button>
-            </Form>
+            <h3>Actions:</h3>
+
+                <br /><button name="create-post" class="submit-button" value="create-post">
+                    Create new blog post
+                </button><br /> 
+                <br /><button name="logout" class="submit-button" value="logout">
+                    Logout
+                </button>
         </div>
     );
 }
