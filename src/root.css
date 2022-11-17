@@ -15,7 +15,40 @@
         width: 17.5%;
         height: 100%;
         border-bottom-right-radius: 0;
+        
     }
+}
+
+@layer components {
+    h1, h2, h3, p {
+        @apply mt-6
+    }
+    h1 {
+        @apply text-6xl
+    }
+    h2 {
+        @apply text-5xl
+    }
+    h3 {
+        @apply text-4xl
+    }
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: none;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #454a4d;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: darkgray; 
 }
 
 body.preload *{
@@ -28,6 +61,15 @@ html, body {
     padding: 0;
     background-color: #181a1b;
     height: 100vh;
+}
+
+body {
+    overflow: auto;
+}
+
+body {
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .menu-items{

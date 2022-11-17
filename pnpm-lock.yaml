@@ -6,6 +6,7 @@ specifiers:
   '@types/marked': ^4.0.7
   autoprefixer: ^10.4.12
   dotenv: ^16.0.3
+  marked: ^4.2.2
   postcss: ^8.4.18
   solid-js: ^1.6.0
   solid-start: ^0.2.0
@@ -19,6 +20,7 @@ specifiers:
 dependencies:
   '@solidjs/meta': 0.28.2_solid-js@1.6.2
   '@solidjs/router': 0.5.0_solid-js@1.6.2
+  marked: 4.2.2
   solid-js: 1.6.2
   solid-start: 0.2.5_3zrnixj5s2zo7r5ma456ac2ypm
   undici: 5.12.0
@@ -2388,6 +2390,12 @@ packages:
     dependencies:
       sourcemap-codec: 1.4.8
     dev: true
+
+  /marked/4.2.2:
+    resolution: {integrity: sha512-JjBTFTAvuTgANXx82a5vzK9JLSMoV6V3LBVn4Uhdso6t7vXrGx7g1Cd2r6NYSsxrYbQGFCMqBDhFHyK5q2UvcQ==}
+    engines: {node: '>= 12'}
+    hasBin: true
+    dev: false
 
   /merge-anything/5.0.4:
     resolution: {integrity: sha512-YFsDeY5A9SLXhL21Qn15wCWewRUW6wMTxQF4SuPe9bNdr1wsjiE44Rp8FQUTCtwO0WLdlKiFzhAVE5tlf857Tg==}

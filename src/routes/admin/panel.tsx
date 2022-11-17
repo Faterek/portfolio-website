@@ -16,14 +16,14 @@ export default function AdminPanel(){
     const [, { Form }] = createServerAction$((f: FormData, { request }) => logout(request));
 
     return (
-        <main class="text-center text-white p-[0.1rem]">
-            <h1 class="text-6xl font-thin my-16">Hello {user()?.username}</h1>
-            <h3 class="text-4xl font-thin my-16">Message board</h3>
+        <div class="mt-16">
+            <h1>Hello {user()?.username}</h1>
+            <h3>Message board</h3>
             <Form>
             <button name="logout" type="submit">
                 Logout
             </button>
             </Form>
-        </main>
+        </div>
     );
 }

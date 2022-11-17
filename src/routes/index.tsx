@@ -1,9 +1,19 @@
 export default function Home() {
   return (
-    <main class="text-center text-white p-[0.1rem]">
-      <h1 class="text-6xl font-thin uppercase my-16">
+    <div class="mt-16">
+      <h1>
         Hello world!
       </h1>
-    </main>
+      <h2>
+        Header 2
+      </h2>
+      <h3>
+        Header 3
+      </h3>
+      <p>
+        Some sample text<br />
+        Multi line
+      </p>
+    </div>
   );
 }

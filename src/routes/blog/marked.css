@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .markedEditor {
+        @apply resize-none bg-[#454a4d] rounded-lg w-[49%] h-[87vh] outline-1 outline outline-[darkgray] outline-offset-2 p-2 float-left
+    }
+    .markedOutput {
+        @apply bg-[#454a4d] rounded-lg w-[49%] h-[87vh] outline-1 outline outline-[darkgray] outline-offset-2 ml-[2%] p-2 float-left text-left
+    }
+    h1 {
+        @apply text-5xl
+    }
+    h2 {
+        @apply text-4xl
+    }
+    h3 {
+        @apply text-3xl
+    }
+}
+
+p, h1, h2, h3 {
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+code {
+    display: inline-block;
+    background-color: #383c3f;
+    padding: 0.25rem 0.4rem 0.1rem 0.3rem;
+    /* padding-left: 0.3rem;
+    padding-right: 0.4rem; */
+    border-radius: 0.25rem;
+}

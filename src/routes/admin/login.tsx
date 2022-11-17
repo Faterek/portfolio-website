@@ -32,8 +32,8 @@ export default function Login() {
     });
   
     return (
-        <main class="text-center text-white p-[0.1rem]">
-            <h1 class="text-6xl font-thin uppercase my-16" >Login</h1>
+        <div class="mt-16">
+            <h1>Login</h1>
             <Form>
                 <div>
                     <label for="username-input">Username:</label>
@@ -50,7 +50,7 @@ export default function Login() {
                 </Show>
                 <button type="submit">{data() ? "Login" : ""}</button>
             </Form>
-        </main>
+        </div>
     );
 }
   
