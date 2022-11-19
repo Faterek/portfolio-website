@@ -7,4 +7,6 @@ netlify
 /node_modules
 /.vscode
 .env
+.env.dev
+.env.prod
 *.code-workspace
