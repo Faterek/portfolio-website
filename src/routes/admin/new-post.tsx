@@ -4,19 +4,20 @@ import { getUser } from "~/db/session";
 import { marked } from 'marked';
 import { createSignal } from 'solid-js';
 import "./marked.css";
-import { Form, FormError } from "solid-start/data/Form";
+import { FormError } from "solid-start/data/Form";
+import { createBlogPost } from "~/db/blog";
 
 export function routeData() {
     return createServerData$(async (_, { request }) => {
         const user = await getUser(request);
         if (!user)
             throw redirect("/");
-        return {};
+        return user;
     });
 }
 
 export default function NewPost(){
-    const data = useRouteData<typeof routeData>();
+    const user = useRouteData<typeof routeData>();
   
     const [createPost, { Form }] = createServerAction$(async (form: FormData) => {
         const postName = form.get("username").toString();
@@ -32,10 +33,14 @@ export default function NewPost(){
             .replaceAll('ó', 'o')
             .replaceAll('ż', 'z')
             .replaceAll('ź', 'z');
+        const postPoster = user.name
+
         if ( typeof postName !== "string" || typeof postContent !== "string") 
             throw new FormError(`Form not submitted correctly.`);
-  
         
+        await createBlogPost({name: postName, route: postRoute, content: postContent, poster: postPoster})
+
+        return redirect("/admin/panel")
     });
 
     marked.setOptions({
