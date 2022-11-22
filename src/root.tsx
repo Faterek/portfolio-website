@@ -1,17 +1,6 @@
 // @refresh reload
 import { createSignal, onMount, Suspense } from "solid-js";
-import {
-  A,
-  Body,
-  ErrorBoundary,
-  FileRoutes,
-  Head,
-  Html,
-  Meta,
-  Routes,
-  Scripts,
-  Title,
-} from "solid-start";
+import { A, Body, ErrorBoundary, FileRoutes, Head, Html, Meta, Routes, Scripts, Title, } from "solid-start";
 import "./root.css";
 const [bodyClass, setBodyClass] = createSignal("preload")
 onMount( async () => {
