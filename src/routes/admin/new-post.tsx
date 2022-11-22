@@ -18,29 +18,18 @@ export function routeData() {
 
 export default function NewPost(){
     const user = useRouteData<typeof routeData>();
-  
     const [createPost, { Form }] = createServerAction$(async (form: FormData) => {
-        const postName = form.get("username").toString();
-        const postContent = form.get("content").toString();
-        const postRoute = postName
-            .toLowerCase()
-            .replaceAll(' ', '-')
-            .replaceAll('ą', 'a')
-            .replaceAll('ć', 'c')
-            .replaceAll('ę', 'e')
-            .replaceAll('ł', 'l')
-            .replaceAll('ń', 'n')
-            .replaceAll('ó', 'o')
-            .replaceAll('ż', 'z')
-            .replaceAll('ź', 'z');
-        const postPoster = user.name
+        const name = form.get("postname");
+        const content = form.get("content");
+        const poster = form.get("username");
 
-        if ( typeof postName !== "string" || typeof postContent !== "string") 
+        if ( typeof name !== "string" || typeof content !== "string" || typeof poster !== "string") 
             throw new FormError(`Form not submitted correctly.`);
-        
-        await createBlogPost({name: postName, route: postRoute, content: postContent, poster: postPoster})
 
-        return redirect("/admin/panel")
+        const create = await createBlogPost({name, content, poster})
+
+        if(create != null) 
+            throw redirect ("/admin/panel")
     });
 
     marked.setOptions({
@@ -57,9 +46,10 @@ export default function NewPost(){
     return (
         <div class="mt-16 text-left">
             <Form>
+                <input type="hidden" name="username" value={user()?.username} />
                 <div class="grid grid-cols-2 grid-rows-test gap-x-4">
                     <div class="col-span-2 auto-cols-min">
-                        <label for="postname-input">Postname:</label>
+                        <label for="postname-input">Postname: </label>
                         <input type="text" name="postname" class="mt-2 bg-[#454a4d] rounded-lg  outline-1 outline outline-[darkgray] outline-offset-2 p-1 w-[100%]"/>
                     </div>
                     
