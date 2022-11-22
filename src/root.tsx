@@ -1,13 +1,14 @@
 // @refresh reload
 import { createSignal, onMount, Suspense } from "solid-js";
-import { A, Body, ErrorBoundary, FileRoutes, Head, Html, Meta, Routes, Scripts, Title, } from "solid-start";
+import { A, Body, ErrorBoundary, FileRoutes, Head, Html, Meta, Routes, Scripts, Title } from "solid-start";
 import "./root.css";
 const [bodyClass, setBodyClass] = createSignal("preload")
 onMount( async () => {
   setTimeout( async () => {
     setBodyClass("")
-  }, 260)
+  }, 400)
 })
+
 export default function Root() {
   return (
     <Html lang="en">
@@ -17,7 +18,7 @@ export default function Root() {
         <Meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Body class={bodyClass()}>
-        <Suspense>
+        <Suspense fallback="Content Loading">
           <ErrorBoundary>
             <nav>
               <input type="checkbox" id="menu-toggle"/>

@@ -5,8 +5,9 @@ type NewPost = {
     poster: string;
 }
 
-export async function fetchBlogPost(name:string){
-    db.query("SELECT name, time, content, poster.name, poster.img, poster.about FROM posts WHERE route = $name", {name})
+export async function fetchBlogPost(route: string){
+    const query = await db.query("SELECT name, content FROM posts WHERE route = $route", { route })
+    return await query[0].result[0]
 }
 
 export async function fetchBlogPosts(page:number){
@@ -30,13 +31,14 @@ export async function createBlogPost({name, content, poster}: NewPost) {
     
     console.log(name + " " + content + " " + poster + " " + route)
     const duplicatePostName = await db.query("SELECT * FROM posts WHERE route = $route;", { route });
-    if (duplicatePostName[0].result[0] != false) return null;
+    if (duplicatePostName[0].result != false) return null;
     const post = await db.query("INSERT INTO posts (route, name, poster, time, content) VALUES ($route, $name, $poster, time::now(), $content)", {
         route,
         name,
         poster,
         content
     })
+    console.log(post[0].result[0])
     return post[0].result[0]
 }
 
