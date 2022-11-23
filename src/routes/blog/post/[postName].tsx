@@ -6,7 +6,7 @@ import { fetchBlogPost } from "~/db/blog"
 
 export const routeData = (props: RouteDataArgs) => {
     return createServerData$((postName) => fetchBlogPost(postName), {
-        key: () => props.params.postName,
+        key: () => props.params.postName
       });
 }
 
@@ -14,7 +14,7 @@ const BlogPost: Component = () => {
     const post = useRouteData<typeof routeData>();
 
     return(
-        <div>
+        <div class="mt-16">
             <Show when={post()}>
                 <h1>{post().name}</h1><br />
                 <div innerHTML={marked.parse(post().content)} class="text-left"></div>

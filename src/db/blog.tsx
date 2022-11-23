@@ -1,3 +1,4 @@
+import { json } from "solid-start";
 import db from "."
 type NewPost = {
     name: string;
@@ -10,9 +11,17 @@ export async function fetchBlogPost(route: string){
     return await query[0].result[0]
 }
 
-export async function fetchBlogPosts(page:number){
-    const pg = ((page - 1) * 10) + 1
-    db.query("SELECT name, time, description, poster.name, poster.img FROM posts ORDER BY time DESC LIMIT 10 START $pg", {pg})
+export async function fetchBlogPosts(page: string){
+    const pg = ((+page - 1) * 10)
+    if (pg == 0){
+        const posts = await db.query("SELECT name FROM posts ORDER BY time DESC LIMIT 10;")
+        return posts[0].result
+    } else if (pg > 0) {
+        const posts = await db.query("SELECT name FROM posts ORDER BY time DESC LIMIT 10 START $pg;", { pg })
+        return posts[0].result
+    } else return json({error: "Invalid page number"})
+
+    
 }
 
 export async function createBlogPost({name, content, poster}: NewPost) {
