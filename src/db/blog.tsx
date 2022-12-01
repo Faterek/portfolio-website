@@ -14,10 +14,10 @@ export async function fetchBlogPost(route: string){
 export async function fetchBlogPosts(page: string){
     const pg = ((+page - 1) * 10)
     if (pg == 0){
-        const posts = await db.query("SELECT name FROM posts ORDER BY time DESC LIMIT 10;")
+        const posts = await db.query("SELECT name, route FROM posts ORDER BY time DESC LIMIT 10;")
         return posts[0].result
     } else if (pg > 0) {
-        const posts = await db.query("SELECT name FROM posts ORDER BY time DESC LIMIT 10 START $pg;", { pg })
+        const posts = await db.query("SELECT name, route FROM posts ORDER BY time DESC LIMIT 10 START $pg;", { pg })
         return posts[0].result
     } else return json({error: "Invalid page number"})
 
