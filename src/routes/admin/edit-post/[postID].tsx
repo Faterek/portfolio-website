@@ -4,7 +4,7 @@ export default function blogPage() {
     const params = useParams()
     return(
         <div>
-            dziaua ${params.page}
+            dziaua {params.postID}
         </div>
     )
 }
