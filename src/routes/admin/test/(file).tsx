@@ -12,7 +12,6 @@ export default function Login() {
         const buffer = Buffer.from( await file.arrayBuffer() );
         fs.writeFile(`public/avatars/${file.name}`, buffer, (err) => {
             if (err) return console.log(err);
-            console.log('udao sie');
         });
     });
   
