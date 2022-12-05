@@ -1,23 +1,36 @@
-export default function Test(){
-    const uploadAvatar = async (event: Event & { currentTarget: HTMLInputElement; target: Element; }) => {
-        try { 
-            if (
-                !event.currentTarget.files ||
-                event.currentTarget.files.length === 0
-            ) {
-                throw new Error("You must select an image to upload.");
-            }
-    
-            const file = event.currentTarget.files[0];
-            console.log(file);
-        } catch (error) {
-            if (error instanceof Error) {
-                alert(error.message);
-            }
-        }
-    };
-    
-    return <input type="file" onChange={uploadAvatar} />;
-    // https://stackoverflow.com/questions/69075652/reactjs-how-to-upload-images-from-front-end-to-public-folder
-    // https://stackoverflow.com/questions/2496710/writing-to-files-in-node-js
+import { Show } from "solid-js";
+import { FormError } from "solid-start";
+import { createServerAction$ } from "solid-start/server";
+import fs from "fs"
+
+export default function Login() {
+    const [sendFile, { Form }] = createServerAction$(async (form: FormData) => {
+        const file = form.get("pliczek");
+        if ( typeof file !== "object") 
+            throw new FormError(`Form not submitted correctly.`);
+        
+        const buffer = Buffer.from( await file.arrayBuffer() );
+        fs.writeFile(`public/avatars/${file.name}`, buffer, (err) => {
+            if (err) return console.log(err);
+            console.log('udao sie');
+        });
+    });
+  
+    return (
+        <div class="mt-16">
+            <h1>Wysyłanie pliku</h1><br />
+            <Form>
+                <div>
+                    <label for="pliczek-input">Plik:</label> <br />
+                    <input name="pliczek" type="file"/>
+                </div>
+                <Show when={sendFile.error}>
+                    <p role="alert" id="error-message">
+                        {sendFile.error.message}
+                    </p>
+                </Show>
+                <br /><button type="submit" class="submit-button">Send file</button>
+            </Form>
+        </div>
+    );
 }
