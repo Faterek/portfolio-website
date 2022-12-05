@@ -34,7 +34,7 @@ export default function Root() {
               <ul id="menu">
                 <li class="menu-items w-[100%] indent-[25px]"><A class="menu-items route" href="/">Home</A></li>
                 <li class="menu-items w-[100%] indent-[25px]"><A class="menu-items route" href="/about">About Me</A></li>
-                <li class="menu-items w-[100%] indent-[25px]"><A class="menu-items route" href="/blog">Blog</A></li>
+                <li class="menu-items w-[100%] indent-[25px]"><A class="menu-items route" href="/blog/page/1">Blog</A></li>
                 <li class="menu-items w-[100%] indent-[25px]"><A class="menu-items route" href="/projects">Projects</A></li>
                 <li class="menu-subitems w-[100%] indent-[40px]"><A class="menu-subitems route" href="/projects/throw-em">Throw 'em</A></li>
                 <li class="menu-subitems w-[100%] indent-[40px]"><A class="menu-subitems route" href="/projects/this-website">This website</A></li>
