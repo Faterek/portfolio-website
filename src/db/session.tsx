@@ -13,7 +13,7 @@ const {SESSION_SECRET: sessionSecret } = process.env
 
 const storage = createCookieSessionStorage({
   cookie: {
-    name: "Fater_protfolio_session",
+    name: "SESSION",
     secure: true,
     secrets: [sessionSecret],
     sameSite: "lax",
@@ -33,6 +33,20 @@ export async function login({ username, passwd }: LoginForm) {
   if (isCorrectPassword[0].result[0] == false) return null;
 
   return user;
+}
+
+export async function updateProfile({ username, name, profilePicturPath }: { username: string, name: string, profilePicturPath: string }) {
+  if (name == "") {
+    await db.query("UPDATE users SET photo = $profilePicturPath WHERE username = $username", { username, profilePicturPath });
+    return redirect("/admin/panel");
+  } else if (profilePicturPath == "") {
+    await db.query("UPDATE users SET name = $name WHERE username = $username", { username, name });
+    return redirect("/admin/panel");
+  } else {
+    await db.query("UPDATE users SET name = $name, photo = $profilePicturPath WHERE username = $username", { username, name, profilePicturPath });
+    return redirect("/admin/panel");
+  }
+  
 }
 
 export async function logout(request: Request) {

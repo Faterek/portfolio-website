@@ -4,22 +4,22 @@
 
 @layer components {
     .markedEditor {
-        @apply resize-none bg-[#454a4d] rounded-lg w-[100%] h-[43rem] outline-1 outline outline-[darkgray] outline-offset-2 p-2
+        @apply resize-none bg-[#454a4d] rounded-lg w-[100%] h-[43rem] outline-1 outline outline-[darkgray] outline-offset-2 p-2;
     }
     .markedOutput {
-        @apply bg-[#454a4d] rounded-lg w-[100%] h-[43rem] outline-1 outline outline-[darkgray] outline-offset-2 p-2
+        @apply bg-[#454a4d] rounded-lg w-[100%] h-[43rem] outline-1 outline outline-[darkgray] outline-offset-2 p-2;
     }
     h1 {
-        @apply text-5xl
+        @apply text-5xl;
     }
     h2 {
-        @apply text-4xl
+        @apply text-4xl;
     }
     h3 {
-        @apply text-3xl
+        @apply text-3xl;
     }
     .markedOutput > p {
-        @apply m-0
+        @apply m-0;
     }
 }
 

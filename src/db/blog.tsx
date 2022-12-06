@@ -36,7 +36,12 @@ export async function createBlogPost({name, content, poster}: NewPost) {
             .replaceAll('ó', 'o')
             .replaceAll('ś', 's')
             .replaceAll('ż', 'z')
-            .replaceAll('ź', 'z');
+            .replaceAll('ź', 'z')
+            .replaceAll(',', '')
+            .replaceAll('.', '')
+            .replaceAll(':', '')
+            .replaceAll('!', '')
+            .replaceAll('?', '');
     
     const duplicatePostName = await db.query("SELECT * FROM posts WHERE route = $route;", { route });
     if (duplicatePostName[0].result != false) return null;

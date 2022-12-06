@@ -8,9 +8,9 @@ export default function Login() {
         const file = form.get("pliczek");
         if ( typeof file !== "object") 
             throw new FormError(`Form not submitted correctly.`);
-        
+            console.log(file);
         const buffer = Buffer.from( await file.arrayBuffer() );
-        fs.writeFile(`public/avatars/${file.name}`, buffer, (err) => {
+        fs.writeFile(`public/images/${file.name}`, buffer, (err) => {
             if (err) return console.log(err);
         });
     });
