@@ -3,6 +3,7 @@ import { createServerAction$, createServerData$, redirect } from "solid-start/se
 import { getUser } from "~/db/session";
 import fs from "fs"
 import { createSignal } from "solid-js";
+import Cropper from "cropperjs"
 
 export function routeData() {
     return createServerData$(async (_, { request }) => {
@@ -16,10 +17,14 @@ export function routeData() {
 export default function UpdateProfile() {
     const user = useRouteData<typeof routeData>();
     const [preview, setPreview] = createSignal("")
+    const [source, setSource] = createSignal((target: HTMLImageElement) => {
+        new Cropper(target)
+        return preview()
+
+    })
     const [updateProfile, { Form }] = createServerAction$(async (form: FormData) => {
         const file = form.get("avatar");
         const displayName = form.get("displayname");
-        if (displayName)
         if ( typeof file !== "object") 
             throw new FormError(`Form not submitted correctly.`);
         
@@ -36,9 +41,9 @@ export default function UpdateProfile() {
                 <input type="text" name="displayname" class="text-black focus:text-black rounded-md p-1"></input><br /><br /><br />
                 <label for="avatar-input">Profile image: </label><br /><br />
                 <div class="rounded-lg w-[50vh] h-[50vh] outline-1 outline outline-[darkgray] outline-offset-2 p-2 mx-auto inline-block align-middle">
-                    <img src={preview()} class="max-w-[100%] max-h-[100%] w-auto h-auto m-auto"/>
+                    <img src={(event) => setSource(event.currentTarget)} class="max-w-[100%] max-h-[100%] w-auto h-auto m-auto block"/>
                 </div><br /><br />
-                <input type="file" name="avatar" onchange={(event) => setPreview(URL.createObjectURL(event.currentTarget.files[0]))}></input><br /><br /><br />
+                <input name="avatar" type="file" onchange={(event) => setPreview(URL.createObjectURL(event.currentTarget.files[0]))}></input><br /><br /><br />
                 <button type="submit" class="submit-button ml-auto">Update</button>
             </Form>
         </div>

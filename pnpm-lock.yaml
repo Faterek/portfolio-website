@@ -5,6 +5,7 @@ specifiers:
   '@solidjs/router': ^0.5.0
   '@types/marked': ^4.0.7
   autoprefixer: ^10.4.12
+  cropperjs: ^1.5.13
   dotenv: ^16.0.3
   marked: ^4.2.2
   postcss: ^8.4.18
@@ -28,6 +29,7 @@ dependencies:
 devDependencies:
   '@types/marked': 4.0.7
   autoprefixer: 10.4.13_postcss@8.4.19
+  cropperjs: 1.5.13
   dotenv: 16.0.3
   postcss: 8.4.19
   solid-start-node: 0.2.5_rxbhrb4427hjahsmgrpq7rcjqq
@@ -1648,6 +1650,10 @@ packages:
     resolution: {integrity: sha512-piOX9Go+Z4f9ZiBFLnZ5VrOpBl0h7IGCkiFUN11QTe6LjAvOT3ifL/5TdoizMh99hcGy5SoLyWbapIY/PIb/3A==}
     dependencies:
       browserslist: 4.21.4
+
+  /cropperjs/1.5.13:
+    resolution: {integrity: sha512-by7jKAo73y5/Do0K6sxdTKHgndY0NMjG2bEdgeJxycbcmHuCiMXqw8sxy5C5Y5WTOTcDGmbT7Sr5CgKOXR06OA==}
+    dev: true
 
   /cssesc/3.0.0:
     resolution: {integrity: sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==}
