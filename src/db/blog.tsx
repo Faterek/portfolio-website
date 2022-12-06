@@ -38,7 +38,6 @@ export async function createBlogPost({name, content, poster}: NewPost) {
             .replaceAll('ż', 'z')
             .replaceAll('ź', 'z');
     
-    console.log(name + " " + content + " " + poster + " " + route)
     const duplicatePostName = await db.query("SELECT * FROM posts WHERE route = $route;", { route });
     if (duplicatePostName[0].result != false) return null;
     const post = await db.query("INSERT INTO posts (route, name, poster, time, content) VALUES ($route, $name, $poster, time::now(), $content)", {
@@ -47,7 +46,6 @@ export async function createBlogPost({name, content, poster}: NewPost) {
         poster,
         content
     })
-    console.log(post[0].result[0])
     return post[0].result[0]
 }
 

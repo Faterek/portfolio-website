@@ -29,8 +29,8 @@ export async function initDB() {
                 user: db_login,
                 pass: db_pass,
             })
-            .then((res) => {
-                console.log("Signed in to database", res);
+            .then(() => {
+                console.log("Signed in to database");
             })
             .catch((err) => {
                 console.log("Error signing in to database", err);
