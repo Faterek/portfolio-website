@@ -17,7 +17,18 @@ export function routeData() {
 
 export default function UpdateProfile() {
     const user = useRouteData<typeof routeData>();
-    Cropper.setDefaults({viewMode: 2, dragMode: "move", aspectRatio: 1, movable: false, zoomable: false, autoCropArea: 1})
+    Cropper.setDefaults({
+        viewMode: 2,
+        dragMode: "move",
+        aspectRatio: 1,
+        movable: false,
+        zoomable: false,
+        autoCropArea: 1,
+        minCropBoxWidth: 100,
+        minCropBoxHeight: 100,
+        minContainerWidth: 100,
+        minContainerHeight: 100
+    })
 
     const [preview, setPreview] = createSignal<string>()
     const [imgSelector, setImgSelector] = createSignal<HTMLImageElement>()
@@ -45,6 +56,9 @@ export default function UpdateProfile() {
                 <label for="displayname-input">Display name: </label><br /><br />
                     <input type="text" name="displayname" class="text-black focus:text-black rounded-md p-1"></input><br /><br /><br />
 
+                {/* <label for="description-textarea"></label>
+                    <textarea name="description"></textarea> */}
+
                 <label for="avatar-input">Profile image: </label><br /><br />
                     <div class="rounded-sm w-[50vh] h-[50vh] outline-1 outline outline-[darkgray] outline-offset-2 mx-auto">
                         <img ref={(el) => {setImgSelector(el)}} id="avatar-img" src={preview()} class="max-w-[100%] block"/>
@@ -68,6 +82,8 @@ export default function UpdateProfile() {
                             container.items.add(file);
                             const fileInput = document.getElementById("avatar") as HTMLInputElement
                             fileInput.files = container.files
+                            cropper().destroy()
+                            setPreview(URL.createObjectURL(container.files[0]))
                         })
                         setSubmitVisible(true)
                         setCropVisible(false)
