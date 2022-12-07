@@ -54,10 +54,10 @@ export default function UpdateProfile() {
                 <input type="hidden" name="username" value={user()?.username} />
 
                 <label for="displayname-input">Display name: </label><br /><br />
-                    <input type="text" name="displayname" class="text-black focus:text-black rounded-md p-1"></input><br /><br /><br />
+                    <input type="text" name="displayname" class="text-black focus:text-black rounded-md p-1"></input><br /><br />
 
-                {/* <label for="description-textarea"></label>
-                    <textarea name="description"></textarea> */}
+                <label for="description-textarea">Description:</label><br /><br />
+                    <textarea name="description" class="nonresize-textarea w-[50vh] h-[12vh]" ></textarea><br /><br />
 
                 <label for="avatar-input">Profile image: </label><br /><br />
                     <div class="rounded-sm w-[50vh] h-[50vh] outline-1 outline outline-[darkgray] outline-offset-2 mx-auto">

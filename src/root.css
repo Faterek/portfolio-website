@@ -35,6 +35,9 @@
     .submit-button {
         @apply bg-[lightgray] text-black p-3 rounded-lg;
     }
+    .nonresize-textarea {
+        @apply resize-none bg-[#454a4d] rounded-lg outline-1 outline outline-[darkgray] outline-offset-2 p-2 overflow-auto;
+    }
 }
 
 ::-webkit-scrollbar {

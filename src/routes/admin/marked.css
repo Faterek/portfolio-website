@@ -4,10 +4,10 @@
 
 @layer components {
     .markedEditor {
-        @apply resize-none bg-[#454a4d] rounded-lg w-[100%] h-[43rem] outline-1 outline outline-[darkgray] outline-offset-2 p-2;
+        @apply resize-none bg-[#454a4d] rounded-lg w-[100%] h-[43rem] outline-1 outline outline-[darkgray] outline-offset-2 p-2 overflow-auto;
     }
     .markedOutput {
-        @apply bg-[#454a4d] rounded-lg w-[100%] h-[43rem] outline-1 outline outline-[darkgray] outline-offset-2 p-2;
+        @apply bg-[#454a4d] rounded-lg w-[100%] h-[43rem] outline-1 outline outline-[darkgray] outline-offset-2 p-2 overflow-auto;
     }
     h1 {
         @apply text-5xl;
