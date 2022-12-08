@@ -35,11 +35,14 @@ export default function UpdateProfile() {
     const [cropper, setCropper] = createSignal<Cropper>()
     const [cropVisible, setCropVisible] = createSignal(false)
     const [submitVisible, setSubmitVisible] = createSignal(false)
+    
     createEffect(() => setCropper(new Cropper(imgSelector())))
 
     const [updateProfile, { Form }] = createServerAction$(async (form: FormData) => {
         const avatar = form.get("avatar");
         const displayName = form.get("displayname");
+        const description = form.get("description");
+        const username = form.get("username");
         if (typeof avatar !== "object" || typeof displayName !== "string") 
             throw new FormError(`Form not submitted correctly.`);
         const buffer = Buffer.from( await avatar.arrayBuffer() );
@@ -49,7 +52,7 @@ export default function UpdateProfile() {
 
     })
     return (
-        <div class="mt-16">
+        <div class="my-16">
             <Form>
                 <input type="hidden" name="username" value={user()?.username} />
 
@@ -64,7 +67,10 @@ export default function UpdateProfile() {
                         <img ref={(el) => {setImgSelector(el)}} id="avatar-img" src={preview()} class="max-w-[100%] block"/>
                     </div><br/><br/>
 
-                <input type="file"
+                <label for="avatar-user" class="cursor-pointer submit-button">
+                    Upload profile image
+                </label>
+                <input type="file" id="avatar-user" class="hidden" accept="image/*"
                     onchange={(event) => {
                         setPreview(URL.createObjectURL(event.currentTarget.files[0]))
                         cropper().destroy()
@@ -81,6 +87,7 @@ export default function UpdateProfile() {
                             const container = new DataTransfer();
                             container.items.add(file);
                             const fileInput = document.getElementById("avatar") as HTMLInputElement
+                            const avatar = document.getElementById("avatar-input") as HTMLInputElement
                             fileInput.files = container.files
                             cropper().destroy()
                             setPreview(URL.createObjectURL(container.files[0]))

@@ -12,11 +12,12 @@ export const routeData = (props: RouteDataArgs) => {
 
 const BlogPost: Component = () => {
     const post = useRouteData<typeof routeData>();
-
     return(
         <div class="mt-16">
             <Show when={post()}>
                 <h1>{post().name}</h1><br />
+                <h2>{post().username}</h2>
+                <img src={post().image} alt={post().username} class="w-[100px] h-[100px]"/>
                 <div innerHTML={marked.parse(post().content)} class="text-left"></div>
             </Show>
         </div>
