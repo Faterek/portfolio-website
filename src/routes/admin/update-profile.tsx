@@ -1,10 +1,11 @@
 import { FormError, useRouteData } from "solid-start";  
 import { createServerAction$, createServerData$, redirect } from "solid-start/server";
-import { getUser } from "~/db/session";
+import { getUser, updateUser } from "~/db/session";
 import fs from "fs"
 import { createEffect, createSignal, Show } from "solid-js";
 import Cropper from "cropperjs"
 import "cropperjs/dist/cropper.css"
+import db from "~/db";
 
 export function routeData() {
     return createServerData$(async (_, { request }) => {
@@ -45,6 +46,8 @@ export default function UpdateProfile() {
         const username = form.get("username");
         if (typeof avatar !== "object" || typeof displayName !== "string") 
             throw new FormError(`Form not submitted correctly.`);
+
+        const update = await updateUser
         const buffer = Buffer.from( await avatar.arrayBuffer() );
         fs.writeFile(`public/images/${avatar.name}`, buffer, (err) => {
             if (err) return console.log(err);

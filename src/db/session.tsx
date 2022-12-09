@@ -35,7 +35,7 @@ export async function login({ username, passwd }: LoginForm) {
   return user;
 }
 
-export async function updateProfile({ username, name, profilePicturPath }: { username: string, name: string, profilePicturPath: string }) {
+export async function updateUser({ username, name, profilePicturPath }: { username: string, name: string, profilePicturPath: string }) {
   if (name == "") {
     await db.query("UPDATE users SET photo = $profilePicturPath WHERE username = $username", { username, profilePicturPath });
     return redirect("/admin/panel");
