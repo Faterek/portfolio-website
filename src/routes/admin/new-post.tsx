@@ -3,9 +3,10 @@ import { createServerAction$, createServerData$, redirect } from "solid-start/se
 import { getUser } from "~/db/session";
 import { marked } from 'marked';
 import { createSignal } from 'solid-js';
-import "./marked.css";
 import { FormError } from "solid-start/data/Form";
 import { createBlogPost } from "~/db/blog";
+
+import "./marked.css";
 
 export function routeData() {
     return createServerData$(async (_, { request }) => {
@@ -56,7 +57,7 @@ export default function NewPost(){
                     <label for="content-textarea" >Content:</label>
                     <label for="preview" class="">Preview:</label>
                     <textarea name="content" onInput={(e) => setParsed(marked.parse((e.target as HTMLTextAreaElement).value))} class="markedEditor mt-1"></textarea>
-                    <div innerHTML={parsed()} class="markedOutput mt-1"></div>
+                    <div innerHTML={parsed()} class="markedOutput mt-1 break-words"></div>
                     <div class=" col-span-2 flex mt-4">
                         <button class="submit-button" onClick={onClickGoBack}>Go back</button>
                         <button type="submit" class="submit-button ml-auto">Create post</button>
