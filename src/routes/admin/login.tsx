@@ -20,10 +20,8 @@ export default function Login() {
         if (typeof username !== 'string' || typeof passwd !== 'string')
             throw new FormError(`Form not submitted correctly.`);
 
-        const fields = { username, passwd };
-
         const user = await login({ username, passwd });
-        if (!user) throw new FormError(`Incorrect credentials`, { fields });
+        if (!user) throw new FormError(`Incorrect credentials`);
 
         return createUserSession(`${user.id}`, '/admin/panel');
     });

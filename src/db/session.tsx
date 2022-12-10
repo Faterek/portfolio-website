@@ -68,6 +68,28 @@ export async function updateUser(userUpdateInfo: {
     return updateResult[0].result[0];
 }
 
+export async function updateUserPassword({
+    userID,
+    password,
+    newPassword,
+}: {
+    userID: string;
+    password: string;
+    newPassword: string;
+}) {
+    const isCorrectPassword = await db.query(
+        'LET $pass = (SELECT password FROM $userID); SELECT * FROM crypto::argon2::compare($pass[0] , $password);',
+        { userID, password },
+    );
+    if (!isCorrectPassword[1].result[0]) return null;
+
+    const updateResult = await db.query(
+        `UPDATE $userID SET password = crypto::argon2::generate($newPassword);`,
+        { userID, newPassword },
+    );
+    return updateResult[0].result[0];
+}
+
 export async function logout(request: Request) {
     const session = await storage.getSession(request.headers.get('Cookie'));
     return redirect('/', {

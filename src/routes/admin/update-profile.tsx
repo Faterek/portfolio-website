@@ -79,7 +79,7 @@ export default function UpdateProfile() {
             setChanges(changes() + 1);
         }
 
-        if (description !== '') {
+        if (description != '') {
             if (typeof description !== 'string') {
                 throw new FormError(`Description is not valid.`);
             }
@@ -175,7 +175,6 @@ export default function UpdateProfile() {
                 ></input>
                 <br />
                 <br />
-                <br />
 
                 <input
                     type='button'
@@ -201,6 +200,9 @@ export default function UpdateProfile() {
                         setCropVisible(false);
                     }}
                 ></input>
+                <br />
+                <br />
+                <br />
 
                 <input type='file' class='hidden' accept='image/png' id='avatar' name='avatar' />
 
@@ -214,7 +216,7 @@ export default function UpdateProfile() {
                     Go back
                 </button>
                 <button type='submit' class='submit-button ml-auto'>
-                    Change
+                    Update profile
                 </button>
             </Form>
         </div>
