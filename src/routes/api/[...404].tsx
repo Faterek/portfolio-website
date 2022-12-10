@@ -1,5 +1,5 @@
-import { json } from "solid-start";
+import { json } from 'solid-start';
 
-export async function GET(){
-    return json({error: 404, message: "Not found"})
+export async function GET() {
+    return json({ status: 'ERR', result: 'Not found' });
 }

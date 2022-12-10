@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 @keyframes checked-anim {
-    
     100% {
         width: 17.5%;
         height: 100%;
@@ -15,12 +14,14 @@
         width: 17.5%;
         height: 100%;
         border-bottom-right-radius: 0;
-        
     }
 }
 
 @layer components {
-    h1, h2, h3, p {
+    h1,
+    h2,
+    h3,
+    p {
         @apply mt-6;
     }
     h1 {
@@ -54,15 +55,18 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: darkgray; 
+    background: darkgray;
 }
 
-body.preload *{
+body.preload * {
     animation-duration: 0s !important;
     -webkit-animation-duration: 0s !important;
-    transition:background-color 0s, opacity 0s, color 0s, width 0s, height 0s, padding 0s, margin 0s !important;}
+    transition: background-color 0s, opacity 0s, color 0s, width 0s, height 0s, padding 0s,
+        margin 0s !important;
+}
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     background-color: #181a1b;
@@ -78,7 +82,7 @@ body {
     overflow-x: hidden;
 }
 
-.menu-items{
+.menu-items {
     margin: 75px 0 -65px 0;
     color: darkgray;
     font: 14pt sans-serif;
@@ -91,7 +95,7 @@ body {
     display: none;
 }
 
-.menu-subitems{
+.menu-subitems {
     margin: 65px 0 -66px 0;
     color: darkgray;
     font: 12pt sans-serif;
@@ -104,18 +108,18 @@ body {
     display: none;
 }
 
-.route:focus{
+.route:focus {
     display: block;
     color: black;
     background-color: lightgray;
-    transition: all .5s;
+    transition: all 0.5s;
 }
 
-#icon{
+#icon {
     position: fixed;
     top: 15px;
     left: 15px;
-    transition: .5s ease;
+    transition: 0.5s ease;
     cursor: pointer;
     z-index: 1;
 }
@@ -125,59 +129,59 @@ body {
     top: 0;
     left: 0;
     text-align: left;
-    margin: 0; padding: 0;
+    margin: 0;
+    padding: 0;
     width: 110px;
     height: 110px;
     background-color: #454a4d;
     border-bottom-right-radius: 100%;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.26);
-    animation: not-checked-anim .3s both;
-    transition: .3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+    animation: not-checked-anim 0.3s both;
+    transition: 0.3s;
 }
 #menu-toggle:checked ~ #menu {
-    animation: checked-anim .3s ease both;
+    animation: checked-anim 0.3s ease both;
 }
 
-#menu-toggle:checked ~ #icon #menu-middle{
-    transition: .2s;
+#menu-toggle:checked ~ #icon #menu-middle {
+    transition: 0.2s;
     opacity: 0%;
 }
 
 #menu-toggle:checked ~ #icon #menu-top {
     transform: rotate(-45deg) translateX(-40%) translateY(30%);
     width: 70px;
-    transition: .2s;
+    transition: 0.2s;
 }
 
 #menu-toggle:checked ~ #icon #menu-bottom {
     transform: rotate(45deg) translateX(30%) translateY(-60%);
     width: 70px;
-    transition: .2s;
+    transition: 0.2s;
 }
 
-#menu-toggle ~ #icon #menu-middle{
-    transition: .2s;
+#menu-toggle ~ #icon #menu-middle {
+    transition: 0.2s;
     opacity: 100%;
 }
 
 #menu-toggle ~ #icon #menu-top {
     transform: rotate(0) translateX(0) translateY(0);
     width: 75px;
-    transition: .2s;
+    transition: 0.2s;
 }
 
 #menu-toggle ~ #icon #menu-bottom {
     transform: rotate(0) translateX(0) translateY(0);
     width: 75px;
-    transition: .2s;
+    transition: 0.2s;
 }
 
 #menu-toggle:checked ~ #menu li,
-#menu-toggle:checked ~ #menu A
-{
+#menu-toggle:checked ~ #menu A {
     display: block;
 }
-#menu-toggle[type="checkbox"]:not(:checked),
-#menu-toggle[type="checkbox"]:checked {
+#menu-toggle[type='checkbox']:not(:checked),
+#menu-toggle[type='checkbox']:checked {
     display: none;
 }

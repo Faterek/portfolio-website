@@ -1,14 +1,12 @@
-import { createServerData$, redirect } from "solid-start/server";
-import { getUser } from "~/db/session";
-import { Navigate, useRouteData } from "solid-start";
+import { createServerData$ } from 'solid-start/server';
+import { getUser } from '~/db/session';
+import { Navigate, useRouteData } from 'solid-start';
 
 export function routeData() {
     return createServerData$(async (_, { request }) => {
         const user = await getUser(request);
-        if (!user)
-            return("/");
-        if (user)
-            return("/admin/panel");
+        if (!user) return '/';
+        if (user) return '/admin/panel';
     });
 }
 
