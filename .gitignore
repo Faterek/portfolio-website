@@ -1,7 +1,7 @@
 dist
+node_modules
 .solid
 .output
-node_modules
 .vscode
 .env
 .env.dev
