@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 @keyframes checked-anim {
-    
     100% {
         width: 17.5%;
         height: 100%;
@@ -18,14 +17,69 @@
     }
 }
 
-html, body {
+@layer components {
+    h1,
+    h2,
+    h3,
+    p {
+        @apply mt-6;
+    }
+    h1 {
+        @apply text-6xl;
+    }
+    h2 {
+        @apply text-5xl;
+    }
+    h3 {
+        @apply text-4xl;
+    }
+    .submit-button {
+        @apply bg-[lightgray] text-black p-3 rounded-lg;
+    }
+    .nonresize-textarea {
+        @apply resize-none bg-[#454a4d] rounded-lg outline-1 outline outline-[darkgray] outline-offset-2 p-2 overflow-auto;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: none;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #454a4d;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: darkgray;
+}
+
+body.preload * {
+    animation-duration: 0s !important;
+    -webkit-animation-duration: 0s !important;
+    transition: background-color 0s, opacity 0s, color 0s, width 0s, height 0s, padding 0s,
+        margin 0s !important;
+}
+
+html,
+body {
     margin: 0;
     padding: 0;
     background-color: #181a1b;
     height: 100vh;
 }
 
-.menu-items{
+body {
+    overflow: auto;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.menu-items {
     margin: 75px 0 -65px 0;
     color: darkgray;
     font: 14pt sans-serif;
@@ -38,7 +92,7 @@ html, body {
     display: none;
 }
 
-.menu-subitems{
+.menu-subitems {
     margin: 65px 0 -66px 0;
     color: darkgray;
     font: 12pt sans-serif;
@@ -51,77 +105,80 @@ html, body {
     display: none;
 }
 
-.route:focus{
+.route:focus {
     display: block;
     color: black;
     background-color: lightgray;
-    transition: all .5s;
+    transition: all 0.5s;
 }
 
-#icon{
+#icon {
     position: fixed;
     top: 15px;
     left: 15px;
-    transition: .5s ease;
+    transition: 0.5s ease;
     cursor: pointer;
     z-index: 1;
 }
 
 #menu {
     position: fixed;
-    margin: 0; padding: 0;
+    top: 0;
+    left: 0;
+    text-align: left;
+    margin: 0;
+    padding: 0;
     width: 110px;
     height: 110px;
     background-color: #454a4d;
     border-bottom-right-radius: 100%;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.26);
-    animation: not-checked-anim .5s both;
-    transition: .5s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+    animation: not-checked-anim 0.3s both;
+    transition: 0.3s;
 }
 #menu-toggle:checked ~ #menu {
-    animation: checked-anim .5s ease both;
+    animation: checked-anim 0.3s ease both;
 }
 
-#menu-toggle:checked ~ #icon > svg > g > #menu-middle{
-    transition: .2s;
+#menu-toggle:checked ~ #icon #menu-middle {
+    transition: 0.2s;
     opacity: 0%;
 }
 
-#menu-toggle:checked ~ #icon > svg > g > #menu-top {
+#menu-toggle:checked ~ #icon #menu-top {
     transform: rotate(-45deg) translateX(-40%) translateY(30%);
     width: 70px;
-    transition: .2s;
+    transition: 0.2s;
 }
 
-#menu-toggle:checked ~ #icon > svg > g > #menu-bottom {
+#menu-toggle:checked ~ #icon #menu-bottom {
     transform: rotate(45deg) translateX(30%) translateY(-60%);
     width: 70px;
-    transition: .2s;
+    transition: 0.2s;
 }
 
-#menu-toggle ~ #icon > svg > g > #menu-middle{
-    transition: .2s;
+#menu-toggle ~ #icon #menu-middle {
+    transition: 0.2s;
     opacity: 100%;
 }
 
-#menu-toggle ~ #icon > svg > g > #menu-top {
+#menu-toggle ~ #icon #menu-top {
     transform: rotate(0) translateX(0) translateY(0);
     width: 75px;
-    transition: .2s;
+    transition: 0.2s;
 }
 
-#menu-toggle ~ #icon > svg > g > #menu-bottom {
+#menu-toggle ~ #icon #menu-bottom {
     transform: rotate(0) translateX(0) translateY(0);
     width: 75px;
-    transition: .2s;
+    transition: 0.2s;
 }
 
-#menu-toggle:checked ~ #menu > li,
-#menu-toggle:checked ~ #menu > li > A
-{
+#menu-toggle:checked ~ #menu li,
+#menu-toggle:checked ~ #menu A {
     display: block;
 }
-#menu-toggle[type="checkbox"]:not(:checked),
-#menu-toggle[type="checkbox"]:checked {
+#menu-toggle[type='checkbox']:not(:checked),
+#menu-toggle[type='checkbox']:checked {
     display: none;
 }

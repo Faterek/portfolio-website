@@ -3,31 +3,39 @@ lockfileVersion: 5.4
 specifiers:
   '@solidjs/meta': ^0.28.0
   '@solidjs/router': ^0.5.0
+  '@types/marked': ^4.0.7
   autoprefixer: ^10.4.12
+  cropperjs: ^1.5.13
   dotenv: ^16.0.3
+  marked: ^4.2.2
   postcss: ^8.4.18
   solid-js: ^1.6.0
   solid-start: ^0.2.0
   solid-start-node: ^0.2.0
   surrealdb.js: ^0.5.0
   tailwindcss: ^3.2.0
+  typescript: ^4.8.4
   undici: ^5.11.0
   vite: ^3.1.8
 
 dependencies:
   '@solidjs/meta': 0.28.2_solid-js@1.6.2
   '@solidjs/router': 0.5.0_solid-js@1.6.2
+  marked: 4.2.2
   solid-js: 1.6.2
   solid-start: 0.2.5_3zrnixj5s2zo7r5ma456ac2ypm
   undici: 5.12.0
 
 devDependencies:
+  '@types/marked': 4.0.7
   autoprefixer: 10.4.13_postcss@8.4.19
+  cropperjs: 1.5.13
   dotenv: 16.0.3
   postcss: 8.4.19
   solid-start-node: 0.2.5_rxbhrb4427hjahsmgrpq7rcjqq
   surrealdb.js: 0.5.0
   tailwindcss: 3.2.4_postcss@8.4.19
+  typescript: 4.8.4
   vite: 3.2.3
 
 packages:
@@ -1311,6 +1319,10 @@ packages:
     resolution: {integrity: sha512-WulqXMDUTYAXCjZnk6JtIHPigp55cVtDgDrO2gHRwhyJto21+1zbVCtOYB2L1F9w4qCQ0rOGWBnBe0FNTiEJIQ==}
     dev: true
 
+  /@types/marked/4.0.7:
+    resolution: {integrity: sha512-eEAhnz21CwvKVW+YvRvcTuFKNU9CV1qH+opcgVK3pIMI6YZzDm6gc8o2vHjldFk6MGKt5pueSB7IOpvpx5Qekw==}
+    dev: true
+
   /@types/node/18.11.9:
     resolution: {integrity: sha512-CRpX21/kGdzjOpFsZSkcrXMGIBWMGNIHXXBVFSH+ggkftxg+XYP20TESbh+zFvFj3EQOl5byk0HTRn1IL6hbqg==}
     dev: true
@@ -1638,6 +1650,10 @@ packages:
     resolution: {integrity: sha512-piOX9Go+Z4f9ZiBFLnZ5VrOpBl0h7IGCkiFUN11QTe6LjAvOT3ifL/5TdoizMh99hcGy5SoLyWbapIY/PIb/3A==}
     dependencies:
       browserslist: 4.21.4
+
+  /cropperjs/1.5.13:
+    resolution: {integrity: sha512-by7jKAo73y5/Do0K6sxdTKHgndY0NMjG2bEdgeJxycbcmHuCiMXqw8sxy5C5Y5WTOTcDGmbT7Sr5CgKOXR06OA==}
+    dev: true
 
   /cssesc/3.0.0:
     resolution: {integrity: sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==}
@@ -2381,6 +2397,12 @@ packages:
       sourcemap-codec: 1.4.8
     dev: true
 
+  /marked/4.2.2:
+    resolution: {integrity: sha512-JjBTFTAvuTgANXx82a5vzK9JLSMoV6V3LBVn4Uhdso6t7vXrGx7g1Cd2r6NYSsxrYbQGFCMqBDhFHyK5q2UvcQ==}
+    engines: {node: '>= 12'}
+    hasBin: true
+    dev: false
+
   /merge-anything/5.0.4:
     resolution: {integrity: sha512-YFsDeY5A9SLXhL21Qn15wCWewRUW6wMTxQF4SuPe9bNdr1wsjiE44Rp8FQUTCtwO0WLdlKiFzhAVE5tlf857Tg==}
     engines: {node: '>=12.13'}
@@ -2951,6 +2973,12 @@ packages:
 
   /tslib/2.4.1:
     resolution: {integrity: sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==}
+
+  /typescript/4.8.4:
+    resolution: {integrity: sha512-QCh+85mCy+h0IGff8r5XWzOVSbBO+KfeYrMQh7NJ58QujwcE22u+NUSmUxqF+un70P9GXKxa2HCNiTTMJknyjQ==}
+    engines: {node: '>=4.2.0'}
+    hasBin: true
+    dev: true
 
   /ufo/0.8.6:
     resolution: {integrity: sha512-fk6CmUgwKCfX79EzcDQQpSCMxrHstvbLswFChHS0Vump+kFkw7nJBfTZoC1j0bOGoY9I7R3n2DGek5ajbcYnOw==}
