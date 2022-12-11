@@ -10,7 +10,7 @@ export const routeData = (props: RouteDataArgs) => {
     });
 };
 
-const BlogPost: Component = () => {
+export default function BlogPost() {
     const post = useRouteData<typeof routeData>();
     return (
         <div class='my-16'>
@@ -23,6 +23,4 @@ const BlogPost: Component = () => {
             </Show>
         </div>
     );
-};
-
-export default BlogPost;
+}

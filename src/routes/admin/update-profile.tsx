@@ -62,7 +62,7 @@ export default function UpdateProfile() {
             ) {
                 throw new FormError(`Profile picture is not valid.`);
             }
-            setProfilePicturePath(`public/images/${profilePicture.name}`);
+            setProfilePicturePath(`/images/${profilePicture.name}`);
             setChanges(changes() + 1);
         }
 
@@ -105,7 +105,7 @@ export default function UpdateProfile() {
 
         if (profilePicturePath()) {
             const buffer = Buffer.from(await (profilePicture as File).arrayBuffer());
-            fs.writeFile(profilePicturePath(), buffer, (err) => {
+            fs.writeFile(`public/images/${(profilePicture as File).name}`, buffer, (err) => {
                 if (err) throw new FormError(`Error writing file: ${err}`);
             });
         }

@@ -19,19 +19,31 @@ export default function AdminPanel() {
     const onClickNewPost = async () => {
         navigate('/admin/new-post');
     };
+    const onClickUpdateProfile = async () => {
+        navigate('/admin/update-profile');
+    };
+    const onClickChangePassword = async () => {
+        navigate('/admin/change-password');
+    };
 
     return (
         <div class='my-16'>
             <h1>Hello {user()?.username}</h1>
             <h3>Actions:</h3> <br />
-            <button
-                name='create-post'
-                class='submit-button'
-                value='create-post'
-                onClick={onClickNewPost}
-            >
+            <button class='submit-button' onClick={onClickNewPost}>
                 Create new blog post
-            </button>{' '}
+            </button>
+            <br />
+            <br />
+            <button class='submit-button' onClick={onClickUpdateProfile}>
+                Update profile
+            </button>
+            <br />
+            <br />
+            <button class='submit-button' onClick={onClickChangePassword}>
+                Change password
+            </button>
+            <br />
             <br />
             <br />
             <Form>
