@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/* colors:
+    #0A011D
+    #B459AE
+    #D305F5
+    #EB6A77
+    #0E0588
+    #1D0D52
+    #170850
+    https://dribbble.com/shots/6480064-Sularis-Countdown-Landing-Page
+*/
 @keyframes checked-anim {
     100% {
         width: 17.5%;
