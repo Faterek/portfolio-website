@@ -6,7 +6,15 @@ export default function NavSidebar(props: { user?: any }) {
     const navigate = useNavigate();
     return (
         <>
-            <label id='icon' for='menu-toggle' class='fixed z-[2] mt-1 ml-1 cursor-pointer'>
+            <label
+                id='icon'
+                for='menu-toggle'
+                class='fixed z-[2] mt-1 ml-1 cursor-pointer select-none'
+                onclick={(event) => {
+                    event.preventDefault();
+                    setMenuOpen(!menuOpen());
+                }}
+            >
                 <svg
                     width='50'
                     height='50'
@@ -16,6 +24,7 @@ export default function NavSidebar(props: { user?: any }) {
                 >
                     <rect
                         id='menu-bottom'
+                        class={`${menuOpen() ? 'menu-open' : ''}`}
                         x='12'
                         y='77'
                         width='75'
@@ -25,6 +34,7 @@ export default function NavSidebar(props: { user?: any }) {
                     />
                     <rect
                         id='menu-middle'
+                        class={`${menuOpen() ? 'menu-open' : ''}`}
                         x='12'
                         y='44'
                         width='75'
@@ -32,19 +42,31 @@ export default function NavSidebar(props: { user?: any }) {
                         rx='6'
                         fill='white'
                     />
-                    <rect id='menu-top' x='12' y='11' width='75' height='12' rx='6' fill='white' />
+                    <rect
+                        id='menu-top'
+                        class={`${menuOpen() ? 'menu-open' : ''}`}
+                        x='12'
+                        y='11'
+                        width='75'
+                        height='12'
+                        rx='6'
+                        fill='white'
+                    />
                 </svg>
             </label>
             <input
                 type='button'
                 class='hidden'
                 id='menu-toggle'
-                onclick={() => setMenuOpen(!menuOpen())}
+                onclick={(event) => event.stopPropagation}
             />
-            <nav class={`fixed z-[1] h-[100vh] ${menuOpen() ? 'w-64' : 'w-16'}`}>
+            <nav class={`fixed z-[1] h-[100vh] select-none ${menuOpen() ? 'w-64' : 'w-16'}`}>
                 <ul id='menu' class={`a ml-2 mt-20`}>
                     <li class='menu-items'>
-                        <A class={`menu-links ${menuOpen() ? '' : 'hidden'}`} href='/'>
+                        <A
+                            class={`menu-links ${menuOpen() ? 'animate-textFadeIn' : 'hidden'}`}
+                            href='/'
+                        >
                             Home
                         </A>
                         <img
@@ -52,37 +74,45 @@ export default function NavSidebar(props: { user?: any }) {
                             alt='Home'
                             width='32rem'
                             class='ml-auto mr-[1.1rem]'
+                            onclick={() => navigate('/')}
                         />
                     </li>
                     <li class='menu-items'>
                         <A
                             id='aboute-me-link'
-                            class={`menu-links ${menuOpen() ? '' : 'hidden'}`}
+                            class={`menu-links ${menuOpen() ? 'animate-textFadeIn' : 'hidden'}`}
                             href='/about'
                         >
                             About Me
                         </A>
                         <img
-                            src='/static/home.svg'
-                            alt='Home'
+                            src='/static/about-me.svg'
+                            alt='About me'
                             width='32rem'
-                            class='ml-auto mr-[1.1rem]'
+                            class='ml-auto mr-[1.1rem] '
                             onclick={() => navigate('/about')}
                         />
                     </li>
                     <li class='menu-items'>
-                        <A class={`menu-links ${menuOpen() ? '' : 'hidden'}`} href='/blog/page/1'>
+                        <A
+                            class={`menu-links ${menuOpen() ? 'animate-textFadeIn' : 'hidden'}`}
+                            href='/blog/page/1'
+                        >
                             Blog
                         </A>
                         <img
-                            src='/static/home.svg'
-                            alt='Home'
+                            src='/static/blog.svg'
+                            alt='Blog'
                             width='32rem'
                             class='ml-auto mr-[1.1rem]'
+                            onclick={() => navigate('/blog')}
                         />
                     </li>
                     <li class='menu-items'>
-                        <A class={`menu-links ${menuOpen() ? '' : 'hidden'}`} href='/projects'>
+                        <A
+                            class={`menu-links ${menuOpen() ? 'animate-textFadeIn' : 'hidden'}`}
+                            href='/projects'
+                        >
                             Projects
                         </A>
                         <img
@@ -96,7 +126,7 @@ export default function NavSidebar(props: { user?: any }) {
                         <A
                             id='project-throwem-link'
                             class={`menu-links flex h-16 items-center ${
-                                menuOpen() ? '' : 'hidden'
+                                menuOpen() ? 'animate-textFadeIn' : 'hidden'
                             }`}
                             href='/projects/throw-em'
                         >
@@ -106,7 +136,7 @@ export default function NavSidebar(props: { user?: any }) {
                     <li id='project-website-link' class='menu-subitems'>
                         <A
                             class={`menu-links flex h-16 items-center ${
-                                menuOpen() ? '' : 'hidden'
+                                menuOpen() ? 'animate-textFadeIn' : 'hidden'
                             }`}
                             href='/projects/this-website'
                         >
@@ -114,7 +144,10 @@ export default function NavSidebar(props: { user?: any }) {
                         </A>
                     </li>
                     <li class='menu-items'>
-                        <A class={`menu-links ${menuOpen() ? '' : 'hidden'}`} href='/contact'>
+                        <A
+                            class={`menu-links ${menuOpen() ? 'animate-textFadeIn' : 'hidden'}`}
+                            href='/contact'
+                        >
                             Contact
                         </A>
                         <img
@@ -128,7 +161,9 @@ export default function NavSidebar(props: { user?: any }) {
                         <Show when={props.user.username != null}>
                             <li class='menu-items'>
                                 <A
-                                    class={`menu-links ${menuOpen() ? '' : 'hidden'}`}
+                                    class={`menu-links ${
+                                        menuOpen() ? 'animate-textFadeIn' : 'hidden'
+                                    }`}
                                     href='/admin/panel'
                                 >
                                     Admin panel

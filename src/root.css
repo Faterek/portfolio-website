@@ -31,6 +31,23 @@
     }
 }
 
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url(/static/fonts/JetBrainsMono/ExtraBold.woff2);
+}
+
+@keyframes text-fade-in {
+    0% {
+        opacity: 0%;
+    }
+    50% {
+        opacity: 0%;
+    }
+    100% {
+        opacity: 100%;
+    }
+}
+
 ::-webkit-scrollbar {
     width: 5px;
 }
@@ -51,6 +68,7 @@ body {
     margin: 0;
     color: whitesmoke;
     background-color: #170850;
+    font-family: 'JetBrains Mono';
 }
 
 nav {
@@ -60,6 +78,7 @@ nav {
     -webkit-backdrop-filter: blur(10px);
     border-right: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+    transition: 0.3s;
 }
 
 .menu-items {
@@ -128,36 +147,26 @@ nav {
     z-index: -1;
 }
 
-/* #menu-toggle:checked ~ #icon #menu-middle {
-    transition: 0.2s;
+#menu-middle.menu-open {
+    transition: 0.1s;
+    transform: translateX(10px);
     opacity: 0%;
 }
 
-#menu-toggle:checked ~ #icon #menu-top {
+#menu-top.menu-open {
     transform: rotate(-45deg) translateX(-40%) translateY(30%);
     width: 70px;
     transition: 0.2s;
 }
 
-#menu-toggle:checked ~ #icon #menu-bottom {
+#menu-bottom.menu-open {
     transform: rotate(45deg) translateX(30%) translateY(-60%);
     width: 70px;
     transition: 0.2s;
 }
 
-#menu-toggle ~ #icon #menu-middle {
-    transition: 0.2s;
-    opacity: 100%;
-}
-
-#menu-toggle ~ #icon #menu-top {
-    transform: rotate(0) translateX(0) translateY(0);
-    width: 75px;
+#menu-middle,
+#menu-top,
+#menu-bottom {
     transition: 0.2s;
 }
-
-#menu-toggle ~ #icon #menu-bottom {
-    transform: rotate(0) translateX(0) translateY(0);
-    width: 75px;
-    transition: 0.2s;
-} */

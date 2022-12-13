@@ -7,6 +7,9 @@ module.exports = {
                 test: '5rem 1.75rem 1fr',
                 test2: '5rem 1.75rem 10rem 1fr',
             },
+            animation: {
+                textFadeIn: 'text-fade-in 0.4s',
+            },
         },
     },
     plugins: [],
