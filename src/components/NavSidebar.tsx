@@ -1,10 +1,12 @@
-import { Show } from 'solid-js';
-import { A } from 'solid-start';
+import { createSignal, Show } from 'solid-js';
+import { A, redirect, useNavigate } from 'solid-start';
 
 export default function NavSidebar(props: { user?: any }) {
+    const [menuOpen, setMenuOpen] = createSignal(false);
+    const navigate = useNavigate();
     return (
-        <nav class='fixed z-[1] w-[15%] h-[100vh] '>
-            <label id='icon' for='menu-toggle'>
+        <>
+            <label id='icon' for='menu-toggle' class='fixed z-[2] mt-1 ml-1 cursor-pointer'>
                 <svg
                     width='50'
                     height='50'
@@ -37,54 +39,111 @@ export default function NavSidebar(props: { user?: any }) {
                 type='button'
                 class='hidden'
                 id='menu-toggle'
-                onclick={() => console.log(`eoo`)}
+                onclick={() => setMenuOpen(!menuOpen())}
             />
-            <ul id='menu' class='a ml-2 mt-4'>
-                <li class='menu-items'>
-                    <A class='menu-links' href='/'>
-                        Home
-                    </A>
-                </li>
-                <li class='menu-items'>
-                    <A class='menu-links' href='/about'>
-                        About Me
-                    </A>
-                </li>
-                <li class='menu-items'>
-                    <A class='menu-links' href='/blog/page/1'>
-                        Blog
-                    </A>
-                </li>
-                <li class='menu-items'>
-                    <A class='menu-links' href='/projects'>
-                        Projects
-                    </A>
-                </li>
-                <li class='menu-subitems'>
-                    <A class='menu-links' href='/projects/throw-em'>
-                        Throw 'em
-                    </A>
-                </li>
-                <li class='menu-subitems mb-2'>
-                    <A class='menu-links' href='/projects/this-website'>
-                        This website
-                    </A>
-                </li>
-                <li class='menu-items'>
-                    <A class='menu-links' href='/contact'>
-                        Contact
-                    </A>
-                </li>
-                <Show when={props.user != null}>
-                    <Show when={props.user.username != null}>
-                        <li class='menu-items'>
-                            <A class='menu-links' href='/admin/panel'>
-                                Admin panel
-                            </A>
-                        </li>
+            <nav class={`fixed z-[1] h-[100vh] ${menuOpen() ? 'w-64' : 'w-16'}`}>
+                <ul id='menu' class={`a ml-2 mt-20`}>
+                    <li class='menu-items'>
+                        <A class={`menu-links ${menuOpen() ? '' : 'hidden'}`} href='/'>
+                            Home
+                        </A>
+                        <img
+                            src='/static/home.svg'
+                            alt='Home'
+                            width='32rem'
+                            class='ml-auto mr-[1.1rem]'
+                        />
+                    </li>
+                    <li class='menu-items'>
+                        <A
+                            id='aboute-me-link'
+                            class={`menu-links ${menuOpen() ? '' : 'hidden'}`}
+                            href='/about'
+                        >
+                            About Me
+                        </A>
+                        <img
+                            src='/static/home.svg'
+                            alt='Home'
+                            width='32rem'
+                            class='ml-auto mr-[1.1rem]'
+                            onclick={() => navigate('/about')}
+                        />
+                    </li>
+                    <li class='menu-items'>
+                        <A class={`menu-links ${menuOpen() ? '' : 'hidden'}`} href='/blog/page/1'>
+                            Blog
+                        </A>
+                        <img
+                            src='/static/home.svg'
+                            alt='Home'
+                            width='32rem'
+                            class='ml-auto mr-[1.1rem]'
+                        />
+                    </li>
+                    <li class='menu-items'>
+                        <A class={`menu-links ${menuOpen() ? '' : 'hidden'}`} href='/projects'>
+                            Projects
+                        </A>
+                        <img
+                            src='/static/home.svg'
+                            alt='Home'
+                            width='32rem'
+                            class='ml-auto mr-[1.1rem]'
+                        />
+                    </li>
+                    <li class='menu-subitems'>
+                        <A
+                            id='project-throwem-link'
+                            class={`menu-links flex h-16 items-center ${
+                                menuOpen() ? '' : 'hidden'
+                            }`}
+                            href='/projects/throw-em'
+                        >
+                            Throw 'em
+                        </A>
+                    </li>
+                    <li id='project-website-link' class='menu-subitems'>
+                        <A
+                            class={`menu-links flex h-16 items-center ${
+                                menuOpen() ? '' : 'hidden'
+                            }`}
+                            href='/projects/this-website'
+                        >
+                            This website
+                        </A>
+                    </li>
+                    <li class='menu-items'>
+                        <A class={`menu-links ${menuOpen() ? '' : 'hidden'}`} href='/contact'>
+                            Contact
+                        </A>
+                        <img
+                            src='/static/home.svg'
+                            alt='Home'
+                            width='32rem'
+                            class='ml-auto mr-[1.1rem]'
+                        />
+                    </li>
+                    <Show when={props.user != null}>
+                        <Show when={props.user.username != null}>
+                            <li class='menu-items'>
+                                <A
+                                    class={`menu-links ${menuOpen() ? '' : 'hidden'}`}
+                                    href='/admin/panel'
+                                >
+                                    Admin panel
+                                </A>
+                                <img
+                                    src='/static/home.svg'
+                                    alt='Home'
+                                    width='32rem'
+                                    class='ml-auto mr-[1.1rem]'
+                                />
+                            </li>
+                        </Show>
                     </Show>
-                </Show>
-            </ul>
-        </nav>
+                </ul>
+            </nav>
+        </>
     );
 }

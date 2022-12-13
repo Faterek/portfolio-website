@@ -54,6 +54,7 @@ body {
 }
 
 nav {
+    left: 0;
     background: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -61,14 +62,25 @@ nav {
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
 }
 
-.menu-item,
-.menu-subitem {
+.menu-items {
+    display: flex;
+    height: 4rem;
+    align-items: center;
+}
+
+.menu-items,
+.menu-subitems {
     font-size: 0.9em;
-    margin-bottom: 0.5rem;
+    width: 100%;
 }
 
 .menu-subitems {
-    margin-left: 0.75rem;
+    margin-left: 1.25rem;
+}
+
+#project-throwem-link,
+#project-website-link {
+    line-height: 1rem;
 }
 
 #paralax-wrapper {
@@ -116,68 +128,7 @@ nav {
     z-index: -1;
 }
 
-/* .menu-items {
-    margin: 75px 0 -65px 0;
-    color: darkgray;
-    font: 14pt sans-serif;
-    font-weight: 700;
-    line-height: 1.8;
-    text-decoration: none;
-    text-transform: none;
-    list-style: none;
-    outline: 0;
-    display: none;
-}
-
-.menu-subitems {
-    margin: 65px 0 -66px 0;
-    color: darkgray;
-    font: 12pt sans-serif;
-    font-weight: 700;
-    line-height: 2;
-    text-decoration: none;
-    text-transform: none;
-    list-style: none;
-    outline: 0;
-    display: none;
-}
-
-.route:focus {
-    display: block;
-    color: black;
-    background-color: lightgray;
-    transition: all 0.5s;
-}
-
-#icon {
-    position: fixed;
-    top: 15px;
-    left: 15px;
-    transition: 0.5s ease;
-    cursor: pointer;
-    z-index: 1;
-}
-
-#menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    text-align: left;
-    margin: 0;
-    padding: 0;
-    width: 110px;
-    height: 110px;
-    background-color: #454a4d;
-    border-bottom-right-radius: 100%;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
-    animation: not-checked-anim 0.3s both;
-    transition: 0.3s;
-}
-#menu-toggle:checked ~ #menu {
-    animation: checked-anim 0.3s ease both;
-}
-
-#menu-toggle:checked ~ #icon #menu-middle {
+/* #menu-toggle:checked ~ #icon #menu-middle {
     transition: 0.2s;
     opacity: 0%;
 }
@@ -209,13 +160,4 @@ nav {
     transform: rotate(0) translateX(0) translateY(0);
     width: 75px;
     transition: 0.2s;
-}
-
-#menu-toggle:checked ~ #menu li,
-#menu-toggle:checked ~ #menu A {
-    display: block;
-}
-#menu-toggle[type='checkbox']:not(:checked),
-#menu-toggle[type='checkbox']:checked {
-    display: none;
 } */
