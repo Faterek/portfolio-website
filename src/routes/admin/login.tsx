@@ -1,6 +1,6 @@
 import { createUserSession, getUser, login } from '~/db/session';
 import { Show } from 'solid-js';
-import { useRouteData } from 'solid-start';
+import { Meta, useRouteData } from 'solid-start';
 import { FormError } from 'solid-start/data';
 import { createServerAction$, createServerData$, redirect } from 'solid-start/server';
 
@@ -27,38 +27,41 @@ export default function Login() {
     });
 
     return (
-        <div class='mx-[18.5%] py-16'>
-            <h1>Login</h1>
-            <br />
-            <Form>
-                <div>
-                    <label for='username-input'>Username:</label> <br />
-                    <input
-                        name='username'
-                        placeholder='Username'
-                        class='text-black focus:text-black rounded-md p-1'
-                    />
-                </div>
+        <>
+            <Meta property='og:url' content={`https://fater.cf/blog/post/login`} />
+            <div class='mx-[18.5%] py-16'>
+                <h1>Login</h1>
                 <br />
-                <div>
-                    <label for='password-input'>Password:</label> <br />
-                    <input
-                        name='password'
-                        type='password'
-                        placeholder='Password'
-                        class='text-black focus:text-black rounded-md p-1'
-                    />
-                </div>
-                <Show when={loggingIn.error}>
-                    <p role='alert' id='error-message'>
-                        {loggingIn.error.message}
-                    </p>
-                </Show>
-                <br />
-                <button type='submit' class='submit-button'>
-                    {data() ? 'Login' : ''}
-                </button>
-            </Form>
-        </div>
+                <Form>
+                    <div>
+                        <label for='username-input'>Username:</label> <br />
+                        <input
+                            name='username'
+                            placeholder='Username'
+                            class='text-black focus:text-black rounded-md p-1'
+                        />
+                    </div>
+                    <br />
+                    <div>
+                        <label for='password-input'>Password:</label> <br />
+                        <input
+                            name='password'
+                            type='password'
+                            placeholder='Password'
+                            class='text-black focus:text-black rounded-md p-1'
+                        />
+                    </div>
+                    <Show when={loggingIn.error}>
+                        <p role='alert' id='error-message'>
+                            {loggingIn.error.message}
+                        </p>
+                    </Show>
+                    <br />
+                    <button type='submit' class='submit-button'>
+                        {data() ? 'Login' : ''}
+                    </button>
+                </Form>
+            </div>
+        </>
     );
 }

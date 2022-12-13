@@ -34,7 +34,6 @@ export default function Root() {
                     property='og:description'
                     content='A portfolio website (and a blog) of Seweryn Fater'
                 />
-                <Meta property='og:url' content='https://fater.cf' />
                 <Meta property='og:image' content='/static/og-baner.jpg' />
                 {/* https://codesandbox.io/s/solid-app-router-suspense-options-4txtnk?file=/style.css */}
             </Head>

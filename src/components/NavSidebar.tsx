@@ -110,6 +110,7 @@ export default function NavSidebar(props: { user?: any }) {
                     </li>
                     <li class='menu-items'>
                         <A
+                            id='projects-link'
                             class={`menu-links ${menuOpen() ? 'animate-textFadeIn' : 'hidden'}`}
                             href='/projects'
                         >
@@ -120,12 +121,13 @@ export default function NavSidebar(props: { user?: any }) {
                             alt='Home'
                             width='32rem'
                             class='ml-auto mr-[1.1rem]'
+                            onclick={() => navigate('/projects')}
                         />
                     </li>
                     <li class='menu-subitems'>
                         <A
                             id='project-throwem-link'
-                            class={`menu-links flex h-16 items-center ${
+                            class={`submenu-links flex h-16 items-center ${
                                 menuOpen() ? 'animate-textFadeIn' : 'hidden'
                             }`}
                             href='/projects/throw-em'
@@ -135,7 +137,7 @@ export default function NavSidebar(props: { user?: any }) {
                     </li>
                     <li id='project-website-link' class='menu-subitems'>
                         <A
-                            class={`menu-links flex h-16 items-center ${
+                            class={`submenu-links flex h-16 items-center ${
                                 menuOpen() ? 'animate-textFadeIn' : 'hidden'
                             }`}
                             href='/projects/this-website'
@@ -155,6 +157,7 @@ export default function NavSidebar(props: { user?: any }) {
                             alt='Home'
                             width='32rem'
                             class='ml-auto mr-[1.1rem]'
+                            onclick={() => navigate('/contact')}
                         />
                     </li>
                     <Show when={props.user != null}>
@@ -173,6 +176,7 @@ export default function NavSidebar(props: { user?: any }) {
                                     alt='Home'
                                     width='32rem'
                                     class='ml-auto mr-[1.1rem]'
+                                    onclick={() => navigate('/admin/panel')}
                                 />
                             </li>
                         </Show>

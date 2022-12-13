@@ -1,4 +1,4 @@
-import { useNavigate, useRouteData } from 'solid-start';
+import { Meta, useNavigate, useRouteData } from 'solid-start';
 import { createServerAction$, createServerData$, redirect } from 'solid-start/server';
 import { getUser } from '~/db/session';
 import { marked } from 'marked';
@@ -46,41 +46,44 @@ export default function NewPost() {
         navigate('/admin/panel');
     };
     return (
-        <div class='mx-[18.5%] py-16'>
-            <Form>
-                <input type='hidden' name='username' value={user()?.username} />
-                <div class='grid grid-cols-2 grid-rows-test gap-x-4'>
-                    <div class='col-span-2 auto-cols-min'>
-                        <label for='postname-input'>Postname: </label>
-                        <input
-                            type='text'
-                            name='postname'
-                            class='mt-2 bg-[#454a4d] rounded-lg  outline-1 outline outline-[darkgray] outline-offset-2 p-1 w-[100%]'
-                        />
-                    </div>
+        <>
+            <Meta property='og:url' content={`https://fater.cf/blog/post/new-post`} />
+            <div class='mx-[18.5%] py-16'>
+                <Form>
+                    <input type='hidden' name='username' value={user()?.username} />
+                    <div class='grid grid-cols-2 grid-rows-test gap-x-4'>
+                        <div class='col-span-2 auto-cols-min'>
+                            <label for='postname-input'>Postname: </label>
+                            <input
+                                type='text'
+                                name='postname'
+                                class='mt-2 bg-[#454a4d] rounded-lg  outline-1 outline outline-[darkgray] outline-offset-2 p-1 w-[100%]'
+                            />
+                        </div>
 
-                    <label for='content-textarea'>Content:</label>
-                    <label for='preview' class=''>
-                        Preview:
-                    </label>
-                    <textarea
-                        name='content'
-                        onInput={(e) =>
-                            setParsed(marked.parse((e.target as HTMLTextAreaElement).value))
-                        }
-                        class='markedEditor mt-1'
-                    ></textarea>
-                    <div innerHTML={parsed()} class='markedOutput mt-1 break-words'></div>
-                    <div class=' col-span-2 flex mt-4'>
-                        <button class='submit-button' onClick={onClickGoBack}>
-                            Go back
-                        </button>
-                        <button type='submit' class='submit-button ml-auto'>
-                            Create post
-                        </button>
+                        <label for='content-textarea'>Content:</label>
+                        <label for='preview' class=''>
+                            Preview:
+                        </label>
+                        <textarea
+                            name='content'
+                            onInput={(e) =>
+                                setParsed(marked.parse((e.target as HTMLTextAreaElement).value))
+                            }
+                            class='markedEditor mt-1'
+                        ></textarea>
+                        <div innerHTML={parsed()} class='markedOutput mt-1 break-words'></div>
+                        <div class=' col-span-2 flex mt-4'>
+                            <button class='submit-button' onClick={onClickGoBack}>
+                                Go back
+                            </button>
+                            <button type='submit' class='submit-button ml-auto'>
+                                Create post
+                            </button>
+                        </div>
                     </div>
-                </div>
-            </Form>
-        </div>
+                </Form>
+            </div>
+        </>
     );
 }

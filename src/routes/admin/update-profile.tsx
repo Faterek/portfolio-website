@@ -1,4 +1,4 @@
-import { FormError, useNavigate, useRouteData } from 'solid-start';
+import { FormError, Meta, useNavigate, useRouteData } from 'solid-start';
 import { createServerAction$, createServerData$, redirect } from 'solid-start/server';
 import { getUser, updateUser } from '~/db/session';
 import { createEffect, createSignal, Show } from 'solid-js';
@@ -117,108 +117,117 @@ export default function UpdateProfile() {
         }
     });
     return (
-        <div class='mx-[18.5%] py-16'>
-            <Form>
-                <input type='hidden' name='userID' value={user()?.id} />
-                <input type='hidden' name='username' value={user()?.username} />
-                <label for='displayname-input'>Display name: </label>
-                <br />
-                <br />
-                <input
-                    type='text'
-                    name='displayname'
-                    class='text-black focus:text-black rounded-md p-1'
-                ></input>
-                <br />
-                <br />
+        <>
+            <Meta property='og:url' content={`https://fater.cf/blog/post/update-profile`} />
+            <div class='mx-[18.5%] py-16'>
+                <Form>
+                    <input type='hidden' name='userID' value={user()?.id} />
+                    <input type='hidden' name='username' value={user()?.username} />
+                    <label for='displayname-input'>Display name: </label>
+                    <br />
+                    <br />
+                    <input
+                        type='text'
+                        name='displayname'
+                        class='text-black focus:text-black rounded-md p-1'
+                    ></input>
+                    <br />
+                    <br />
 
-                <label for='description-textarea'>Description:</label>
-                <br />
-                <br />
-                <textarea
-                    name='description'
-                    class='nonresize-textarea w-[50vh] h-[12vh]'
-                ></textarea>
-                <br />
-                <br />
+                    <label for='description-textarea'>Description:</label>
+                    <br />
+                    <br />
+                    <textarea
+                        name='description'
+                        class='nonresize-textarea w-[50vh] h-[12vh]'
+                    ></textarea>
+                    <br />
+                    <br />
 
-                <label for='avatar-input'>Profile image: </label>
-                <br />
-                <br />
-                <div class='rounded-sm w-[50vh] h-[50vh] outline-1 outline outline-[darkgray] outline-offset-2 mx-auto'>
-                    <img
-                        ref={(el) => {
-                            setImgSelector(el);
+                    <label for='avatar-input'>Profile image: </label>
+                    <br />
+                    <br />
+                    <div class='rounded-sm w-[50vh] h-[50vh] outline-1 outline outline-[darkgray] outline-offset-2 mx-auto'>
+                        <img
+                            ref={(el) => {
+                                setImgSelector(el);
+                            }}
+                            id='avatar-img'
+                            src={preview()}
+                            class='max-w-[100%] block'
+                        />
+                    </div>
+                    <br />
+                    <br />
+
+                    <label for='avatar-user' class='cursor-pointer submit-button'>
+                        Upload profile image
+                    </label>
+                    <input
+                        type='file'
+                        id='avatar-user'
+                        class='hidden'
+                        accept='image/*'
+                        onchange={(event) => {
+                            setPreview(URL.createObjectURL(event.currentTarget.files[0]));
+                            cropper().destroy();
+                            setCropper(new Cropper(imgSelector()));
+                            setCropVisible(true);
                         }}
-                        id='avatar-img'
-                        src={preview()}
-                        class='max-w-[100%] block'
-                    />
-                </div>
-                <br />
-                <br />
+                    ></input>
+                    <br />
+                    <br />
 
-                <label for='avatar-user' class='cursor-pointer submit-button'>
-                    Upload profile image
-                </label>
-                <input
-                    type='file'
-                    id='avatar-user'
-                    class='hidden'
-                    accept='image/*'
-                    onchange={(event) => {
-                        setPreview(URL.createObjectURL(event.currentTarget.files[0]));
-                        cropper().destroy();
-                        setCropper(new Cropper(imgSelector()));
-                        setCropVisible(true);
-                    }}
-                ></input>
-                <br />
-                <br />
-
-                <input
-                    type='button'
-                    value='Crop'
-                    class={`submit-button ml-auto ${cropVisible() ? '' : 'hidden'}`}
-                    onClick={() => {
-                        cropper()
-                            .getCroppedCanvas({ width: 1024, height: 1024 })
-                            .toBlob((blob) => {
-                                const file = new File([blob], `${user()?.username}-image.png`, {
-                                    type: 'image/png',
-                                    lastModified: new Date().getTime(),
+                    <input
+                        type='button'
+                        value='Crop'
+                        class={`submit-button ml-auto ${cropVisible() ? '' : 'hidden'}`}
+                        onClick={() => {
+                            cropper()
+                                .getCroppedCanvas({ width: 1024, height: 1024 })
+                                .toBlob((blob) => {
+                                    const file = new File([blob], `${user()?.username}-image.png`, {
+                                        type: 'image/png',
+                                        lastModified: new Date().getTime(),
+                                    });
+                                    const container = new DataTransfer();
+                                    container.items.add(file);
+                                    const fileInput = document.getElementById(
+                                        'avatar',
+                                    ) as HTMLInputElement;
+                                    fileInput.files = container.files;
+                                    cropper().destroy();
+                                    setPreview(URL.createObjectURL(container.files[0]));
                                 });
-                                const container = new DataTransfer();
-                                container.items.add(file);
-                                const fileInput = document.getElementById(
-                                    'avatar',
-                                ) as HTMLInputElement;
-                                fileInput.files = container.files;
-                                cropper().destroy();
-                                setPreview(URL.createObjectURL(container.files[0]));
-                            });
-                        setCropVisible(false);
-                    }}
-                ></input>
-                <br />
-                <br />
-                <br />
+                            setCropVisible(false);
+                        }}
+                    ></input>
+                    <br />
+                    <br />
+                    <br />
 
-                <input type='file' class='hidden' accept='image/png' id='avatar' name='avatar' />
+                    <input
+                        type='file'
+                        class='hidden'
+                        accept='image/png'
+                        id='avatar'
+                        name='avatar'
+                    />
 
-                <Show when={updateProfile.error}>
-                    <p role='alert' id='error-message'>
-                        {updateProfile.error.message}
-                    </p>
-                </Show>
+                    <Show when={updateProfile.error}>
+                        <p role='alert' id='error-message'>
+                            {updateProfile.error.message}
+                        </p>
+                    </Show>
 
-                <button class='submit-button mr-2' onClick={onClickGoBack}>
-                    Go back
-                </button>
-                <button type='submit' class='submit-button ml-auto'>
-                    Update profile
-                </button>
-            </Form>
-        </div>
+                    <button class='submit-button mr-2' onClick={onClickGoBack}>
+                        Go back
+                    </button>
+                    <button type='submit' class='submit-button ml-auto'>
+                        Update profile
+                    </button>
+                </Form>
+            </div>
+        </>
     );
 }

@@ -81,6 +81,10 @@ nav {
     transition: 0.3s;
 }
 
+.menu-links {
+    margin-left: 10px;
+}
+
 .menu-items {
     display: flex;
     height: 4rem;
@@ -97,9 +101,14 @@ nav {
     margin-left: 1.25rem;
 }
 
-#project-throwem-link,
-#project-website-link {
+.submenu-links {
     line-height: 1rem;
+    margin-left: 12px;
+    font-size: 0.85em;
+}
+
+#projects-link {
+    line-height: 0rem;
 }
 
 #paralax-wrapper {
