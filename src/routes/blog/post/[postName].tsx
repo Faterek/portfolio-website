@@ -13,7 +13,7 @@ export const routeData = (props: RouteDataArgs) => {
 export default function BlogPost() {
     const post = useRouteData<typeof routeData>();
     return (
-        <div class='my-16'>
+        <div class='mx-[18.5%] py-16'>
             <Show when={post()}>
                 <h1>{post().name}</h1>
                 <br />

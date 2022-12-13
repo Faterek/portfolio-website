@@ -1,6 +1,6 @@
 export default function About() {
     return (
-        <div class='my-16'>
+        <div class='mx-[18.5%] py-16'>
             <p>
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos ullam minus sint
                 odio. Soluta nulla, ipsum quos minima tempora vero facere unde! Voluptatem et

@@ -117,7 +117,7 @@ export default function UpdateProfile() {
         }
     });
     return (
-        <div class='my-16'>
+        <div class='mx-[18.5%] py-16'>
             <Form>
                 <input type='hidden' name='userID' value={user()?.id} />
                 <input type='hidden' name='username' value={user()?.username} />

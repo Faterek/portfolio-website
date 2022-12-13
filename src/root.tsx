@@ -28,20 +28,23 @@ export default function Root() {
                 <Meta charset='utf-8' />
                 <Meta name='viewport' content='width=device-width, initial-scale=1' />
                 <Meta property='og:type' content='website' />
+                <Meta property='og:site_name' content='fater.cf' />
                 <Meta property='og:title' content='Seweryn Fater portfolio website' />
-                <Meta property='og:description' content='website description' />
+                <Meta
+                    property='og:description'
+                    content='A portfolio website (and a blog) of Seweryn Fater'
+                />
                 <Meta property='og:url' content='https://fater.cf' />
-                <Meta property='og:image' content='full thumbnail path' />
+                <Meta property='og:image' content='/static/og-baner.jpg' />
+                {/* https://codesandbox.io/s/solid-app-router-suspense-options-4txtnk?file=/style.css */}
             </Head>
             <Body>
                 <Suspense fallback='Loading...'>
                     <ErrorBoundary>
-                        <div class='mx-[18.5%] text-center text-white p-[0.1rem]'>
-                            <NavSidebar user={user()} />
-                            <Routes>
-                                <FileRoutes />
-                            </Routes>
-                        </div>
+                        <NavSidebar user={user()} />
+                        <Routes>
+                            <FileRoutes />
+                        </Routes>
                     </ErrorBoundary>
                 </Suspense>
                 <Scripts />

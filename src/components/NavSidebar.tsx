@@ -3,8 +3,7 @@ import { A } from 'solid-start';
 
 export default function NavSidebar(props: { user?: any }) {
     return (
-        <nav>
-            <input type='checkbox' id='menu-toggle' />
+        <nav class='fixed z-[1] w-[15%] h-[100vh] '>
             <label id='icon' for='menu-toggle'>
                 <svg
                     width='50'
@@ -20,7 +19,7 @@ export default function NavSidebar(props: { user?: any }) {
                         width='75'
                         height='12'
                         rx='6'
-                        fill='darkgray'
+                        fill='white'
                     />
                     <rect
                         id='menu-middle'
@@ -29,59 +28,57 @@ export default function NavSidebar(props: { user?: any }) {
                         width='75'
                         height='12'
                         rx='6'
-                        fill='darkgray'
+                        fill='white'
                     />
-                    <rect
-                        id='menu-top'
-                        x='12'
-                        y='11'
-                        width='75'
-                        height='12'
-                        rx='6'
-                        fill='darkgray'
-                    />
+                    <rect id='menu-top' x='12' y='11' width='75' height='12' rx='6' fill='white' />
                 </svg>
             </label>
-            <ul id='menu'>
-                <li class='menu-items w-[100%] indent-[25px]'>
-                    <A class='menu-items route' href='/'>
+            <input
+                type='button'
+                class='hidden'
+                id='menu-toggle'
+                onclick={() => console.log(`eoo`)}
+            />
+            <ul id='menu' class='a ml-2 mt-4'>
+                <li class='menu-items'>
+                    <A class='menu-links' href='/'>
                         Home
                     </A>
                 </li>
-                <li class='menu-items w-[100%] indent-[25px]'>
-                    <A class='menu-items route' href='/about'>
+                <li class='menu-items'>
+                    <A class='menu-links' href='/about'>
                         About Me
                     </A>
                 </li>
-                <li class='menu-items w-[100%] indent-[25px]'>
-                    <A class='menu-items route' href='/blog/page/1'>
+                <li class='menu-items'>
+                    <A class='menu-links' href='/blog/page/1'>
                         Blog
                     </A>
                 </li>
-                <li class='menu-items w-[100%] indent-[25px]'>
-                    <A class='menu-items route' href='/projects'>
+                <li class='menu-items'>
+                    <A class='menu-links' href='/projects'>
                         Projects
                     </A>
                 </li>
-                <li class='menu-subitems w-[100%] indent-[40px]'>
-                    <A class='menu-subitems route' href='/projects/throw-em'>
+                <li class='menu-subitems'>
+                    <A class='menu-links' href='/projects/throw-em'>
                         Throw 'em
                     </A>
                 </li>
-                <li class='menu-subitems w-[100%] indent-[40px]'>
-                    <A class='menu-subitems route' href='/projects/this-website'>
+                <li class='menu-subitems mb-2'>
+                    <A class='menu-links' href='/projects/this-website'>
                         This website
                     </A>
                 </li>
-                <li class='menu-items w-[100%] indent-[25px]'>
-                    <A class='menu-items route' href='/contact'>
+                <li class='menu-items'>
+                    <A class='menu-links' href='/contact'>
                         Contact
                     </A>
                 </li>
                 <Show when={props.user != null}>
                     <Show when={props.user.username != null}>
-                        <li class='menu-items w-[100%] indent-[25px]'>
-                            <A class='menu-items route' href='/admin/panel'>
+                        <li class='menu-items'>
+                            <A class='menu-links' href='/admin/panel'>
                                 Admin panel
                             </A>
                         </li>

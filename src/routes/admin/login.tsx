@@ -27,7 +27,7 @@ export default function Login() {
     });
 
     return (
-        <div class='mt-16'>
+        <div class='mx-[18.5%] py-16'>
             <h1>Login</h1>
             <br />
             <Form>

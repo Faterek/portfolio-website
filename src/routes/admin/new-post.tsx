@@ -46,7 +46,7 @@ export default function NewPost() {
         navigate('/admin/panel');
     };
     return (
-        <div class='my-16 text-left'>
+        <div class='mx-[18.5%] py-16'>
             <Form>
                 <input type='hidden' name='username' value={user()?.username} />
                 <div class='grid grid-cols-2 grid-rows-test gap-x-4'>

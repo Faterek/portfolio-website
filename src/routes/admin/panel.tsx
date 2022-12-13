@@ -27,7 +27,7 @@ export default function AdminPanel() {
     };
 
     return (
-        <div class='my-16'>
+        <div class='mx-[18.5%] py-16'>
             <h1>Hello {user()?.username}</h1>
             <h3>Actions:</h3> <br />
             <button class='submit-button' onClick={onClickNewPost}>

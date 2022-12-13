@@ -50,7 +50,7 @@ export default function EditBlogPost() {
     };
 
     return (
-        <div class='my-16 text-left'>
+        <div class='mx-[18.5%] py-16'>
             <Form>
                 <input type='hidden' name='username' value={user()?.username} />
                 <input type='hidden' name='postroute' value={post()?.route} />

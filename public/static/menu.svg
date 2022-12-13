@@ -1,0 +1,7 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="menu-frame">
+<rect id="menu-top" x="12" y="11" width="75" height="12" rx="6" fill="black"/>
+<rect id="menu-middle" x="12" y="44" width="75" height="12" rx="6" fill="black"/>
+<rect id="menu-bottom" x="12" y="77" width="75" height="12" rx="6" fill="black"/>
+</g>
+</svg>

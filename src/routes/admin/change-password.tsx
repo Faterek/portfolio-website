@@ -46,7 +46,7 @@ export default function ChangePassword() {
     });
 
     return (
-        <div class='my-16'>
+        <div class='mx-[18.5%] py-16'>
             <Form>
                 <input type='hidden' name='userID' value={user()?.id} />
                 <label for='password-input'>Old password: </label>

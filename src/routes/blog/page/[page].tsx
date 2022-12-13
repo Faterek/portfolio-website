@@ -17,7 +17,7 @@ type Post = {
 export default function BlogPage() {
     const posts = useRouteData<typeof routeData>();
     return (
-        <div class='my-16'>
+        <div class='mx-[18.5%] py-16'>
             <Show when={posts()}>
                 <For each={posts() as unknown[]}>
                     {(item: Post) => (

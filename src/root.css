@@ -12,28 +12,8 @@
     #170850
     https://dribbble.com/shots/6480064-Sularis-Countdown-Landing-Page
 */
-@keyframes checked-anim {
-    100% {
-        width: 17.5%;
-        height: 100%;
-        border-bottom-right-radius: 0;
-    }
-}
-@keyframes not-checked-anim {
-    0% {
-        width: 17.5%;
-        height: 100%;
-        border-bottom-right-radius: 0;
-    }
-}
 
 @layer components {
-    h1,
-    h2,
-    h3,
-    p {
-        @apply mt-6;
-    }
     h1 {
         @apply text-6xl;
     }
@@ -52,44 +32,91 @@
 }
 
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 5px;
 }
 
 ::-webkit-scrollbar-track {
-    background: none;
+    background: rgb(100, 100, 100);
 }
 
 ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background: #454a4d;
+    background: rgb(204, 204, 204);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: darkgray;
+    background: white;
 }
 
-body.preload * {
-    animation-duration: 0s !important;
-    -webkit-animation-duration: 0s !important;
-    transition: background-color 0s, opacity 0s, color 0s, width 0s, height 0s, padding 0s,
-        margin 0s !important;
-}
-
-html,
 body {
     margin: 0;
-    padding: 0;
-    background-color: #181a1b;
+    color: whitesmoke;
+    background-color: #170850;
+}
+
+nav {
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+}
+
+.menu-item,
+.menu-subitem {
+    font-size: 0.9em;
+    margin-bottom: 0.5rem;
+}
+
+.menu-subitems {
+    margin-left: 0.75rem;
+}
+
+#paralax-wrapper {
     height: 100vh;
-}
-
-body {
-    overflow: auto;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
+    perspective: 10px;
 }
 
-.menu-items {
+#paralax-bg-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    transform-style: preserve-3d;
+    z-index: -1;
+}
+
+#paralax-bg-sky {
+    transform: translateZ(-20px) scale(3.11);
+}
+
+#paralax-bg-mount4 {
+    transform: translateZ(-15px) scale(2.61);
+}
+
+#paralax-bg-mount3 {
+    transform: translateZ(-10px) scale(2.11);
+}
+
+#paralax-bg-mount2 {
+    transform: translateZ(-5px) scale(1.61);
+}
+
+#paralax-bg-mount1 {
+    transform: translateZ(0px) scale(1);
+}
+
+.paralax-bg {
+    position: absolute;
+    width: 121%;
+    height: 121%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* .menu-items {
     margin: 75px 0 -65px 0;
     color: darkgray;
     font: 14pt sans-serif;
@@ -191,4 +218,4 @@ body {
 #menu-toggle[type='checkbox']:not(:checked),
 #menu-toggle[type='checkbox']:checked {
     display: none;
-}
+} */
