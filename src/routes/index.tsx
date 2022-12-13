@@ -8,6 +8,7 @@ export default function Home() {
                     id='paralax-bg-mount4'
                     class='paralax-bg'
                 />
+                <h1 id='paralax-text'>Welcome</h1>
                 <img
                     src='/static/paralax-bg-mount3.svg'
                     id='paralax-bg-mount3'
