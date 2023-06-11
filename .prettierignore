@@ -1,0 +1,6 @@
+dist
+.solid
+.output
+node_modules
+.vscode
+*.code-workspace
