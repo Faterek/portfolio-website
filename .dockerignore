@@ -1,0 +1,6 @@
+.git
+.editorconfig
+.gitignore
+.pretierrc*
+.pretierrcignore
+README.md
