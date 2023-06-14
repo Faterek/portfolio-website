@@ -1,3 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    @apply
+        bg-[#170850]
+        text-[#F5F5F5]
+        font-overpass
+}
+
+.lang-button {
+    @apply
+        h-[49.1%]
+        w-[5rem]
+        py-[0.05rem]
+        px-[0.3rem]
+        transition-colors
+        duration-300
+        hover:bg-gray-400/60
+}
+
+.nav {
+    @apply
+    bg-[#10101099]/60
+    flex h-[4.5rem]
+    absolute
+    top-0 z-10;
+
+    width: calc(100% - 6px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgb(100, 100, 100);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(204, 204, 204);
+    border-radius: 0.5em;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: white;
+}
+
+#paralax-wrapper {
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    perspective: 10px;
+    scroll-behavior: smooth;
+}
+
+#paralax-bg-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    transform-style: preserve-3d;
+    text-align: center;
+    z-index: -1;
+}
+
+#paralax-bg-sky {
+    transform: translateZ(-20px) scale(3.11);
+}
+
+#paralax-bg-mount4 {
+    transform: translateZ(-15px) scale(2.61);
+}
+
+#paralax-text {
+    top: 100vh;
+    transform: translateZ(-11px) scale(2.36);
+    @apply
+        text-4xl
+        font-semibold
+}
+
+#paralax-bg-mount3 {
+    transform: translateZ(-10px) scale(2.11);
+}
+
+#paralax-bg-mount2 {
+    transform: translateZ(-5px) scale(1.61);
+}
+
+.paralax-bg,
+#paralax-text {
+    position: absolute;
+    width: 121%;
+    height: 121%;
+    object-fit: cover;
+    z-index: -1;
+}

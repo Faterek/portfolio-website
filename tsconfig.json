@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "node",
@@ -9,6 +10,7 @@
     "jsxImportSource": "solid-js",
     "types": ["vite/client"],
     "noEmit": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "resolveJsonModule": true
   }
 }
