@@ -5,6 +5,11 @@
         "aboutMe": "O mnie",
         "contact": "Kontakt",
         "welcome": "Witaj",
+        "aboutMeIntroduction": "Cześć, jestem ",
+        "aboutMeContent": "Jestem z Polski i uwielbiam programować, tworzyć inteligentne urządzenia do domu i rozwijać swój homelab. \nObecnie rozwijam się w kierunku web devu, devops i w wolnym czasie game devu, ale prawie nic mnie nie przeraża i zawsze jestem otwarty na nowe wyzwania.",
+        "aboutMeImageAlt": "To ja!",
+        "skillsTitle": "Moje umiejętności",
+        "contactTitle": "Kontakt i Github",
         "sourceCode": "Kod źródłowy tej strony na moim GitHubie"
     }
 }

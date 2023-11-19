@@ -4,3 +4,4 @@
 .pretierrc*
 .pretierrcignore
 README.md
+Jenkinsfile

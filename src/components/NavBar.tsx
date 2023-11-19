@@ -1,13 +1,13 @@
 import { createSignal, createEffect } from 'solid-js';
 import { useTransContext } from '@mbarzda/solid-i18next';
 
-export default function NavBar(props) {
+export default function NavBar(props: any) {
     const [lang, setLang] = createSignal(localStorage.getItem('lang'));
     const [, { changeLanguage }] = useTransContext();
 
     createEffect(() => {
-        changeLanguage(lang());
-        localStorage.setItem('lang', lang());
+        changeLanguage(lang() as string);
+        localStorage.setItem('lang', lang() as string);
     });
 
     return (
