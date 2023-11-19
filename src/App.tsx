@@ -1,13 +1,13 @@
 import { createSignal } from 'solid-js';
 import { Route, Routes } from '@solidjs/router';
 
-import Home from './routes/Home';
+import Index from './routes/Index';
 
 export default function App() {
     const [lang, setLang] = createSignal(localStorage.getItem('lang'));
     if (!lang()) {
         setLang(navigator.languages.find((lang) => lang === 'pl') ? 'pl' : 'en');
-        localStorage.setItem('lang', lang());
+        localStorage.setItem('lang', lang() as string);
     } else {
         setLang(localStorage.getItem('lang')!);
     }
@@ -15,7 +15,7 @@ export default function App() {
     return (
         <>
             <Routes>
-                <Route path='/' component={Home} />
+                <Route path='/' component={Index} />
             </Routes>
         </>
     );

@@ -4,37 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-    @apply
-        bg-[#170850]
-        text-[#F5F5F5]
-        font-overpass
-}
-
-.lang-button {
-    @apply
-        h-[49.1%]
-        w-[5rem]
-        py-[0.05rem]
-        px-[0.3rem]
-        transition-colors
-        duration-300
-        hover:bg-gray-400/60
-}
-
-.nav {
-    @apply
-    bg-[#10101099]/60
-    flex h-[4.5rem]
-    absolute
-    top-0 z-10;
-
-    width: calc(100% - 6px);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(7px);
-    -webkit-backdrop-filter: blur(7px);
-}
-
 ::-webkit-scrollbar {
     width: 6px;
 }
@@ -50,6 +19,38 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
     background: white;
+}
+
+body {
+    @apply
+        bg-[#170850]
+        text-[#F5F5F5]
+        font-overpass
+        scroll-smooth
+}
+
+.lang-button {
+    @apply
+        h-[49.1%]
+        w-[5rem]
+        py-[0.05rem]
+        px-[0.3rem]
+        transition-colors
+        duration-300
+        hover:bg-gray-400/60
+}
+
+.nav {
+    @apply
+    bg-[#f0f0f0]/5
+    flex h-[4.5rem]
+    absolute
+    top-0 z-10;
+
+    width: calc(100% - 6px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
 }
 
 #paralax-wrapper {
@@ -83,7 +84,7 @@ body {
     top: 100vh;
     transform: translateZ(-11px) scale(2.36);
     @apply
-        text-4xl
+        text-6xl
         font-semibold
 }
 

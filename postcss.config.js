@@ -1,7 +1,7 @@
-module.exports = {
-  purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+export default {
   plugins: {
     tailwindcss: {},
     autoprefixer: {},
+    cssnano: { preset: 'default' }
   },
-};
+}
