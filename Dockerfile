@@ -16,4 +16,4 @@ RUN bun run build
 
 # Release stage
 FROM nginx:mainline-alpine as release
-COPY --from=build-stage /app/dist /usr/share/nginx/html
+COPY --from=build /app/dist /usr/share/nginx/html
