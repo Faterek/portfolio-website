@@ -1,7 +1,7 @@
 ## Usage
 
 ```bash
-$ npm install # or pnpm install or yarn install
+$ bun install # or npm install or pnpm install or yarn install
 ```
 
 ### Learn more on the [Solid Website](https://solidjs.com) or at [Solid Discord](https://discord.com/invite/solidjs)
