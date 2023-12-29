@@ -46,7 +46,8 @@ export default function Index() {
             return t('aboutMeIntroduction');
         },
         get aboutMeContent() {
-            return t('aboutMeContent').split('\n') as string[];
+            let content = t('aboutMeContent');
+            return content ? content.split('\n') : [];
         },
         get aboutMeImageAlt() {
             return t('aboutMeImageAlt');
@@ -55,6 +56,7 @@ export default function Index() {
             return t('contactTitle');
         },
     };
+
     return (
         <>
             <NavBar>
